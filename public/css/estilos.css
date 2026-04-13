@@ -1,0 +1,7 @@
+.bg-verde-musgo {
+    background-color: #556B2F;
+}
+.carousel-item img {
+    height: 400px;
+    object-fit: cover;
+}
