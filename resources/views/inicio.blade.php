@@ -13,7 +13,7 @@
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <nav class="navbar navbar-expand-lg navbar-dark bg-verde-musgo">
   <div class="container">
-    <a class="navbar-brand" href="/">Tienda</a>
+    <a class="navbar-brand" href="/">Ondas de Sanacion</a>
 
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ms-auto">
