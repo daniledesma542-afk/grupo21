@@ -32,7 +32,7 @@
     </div>
   </div>
 </nav>
-<footer class="bg-verde-musgo text-white mt-5 p-4">
+<footer class="bg-marron-clarito text-white mt-5 p-4">
   <div class="container text-center">
     
     <a href="/contacto" class="text-white me-3">

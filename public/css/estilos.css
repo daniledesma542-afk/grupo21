@@ -1,6 +1,9 @@
 .bg-verde-musgo {
     background-color: #556B2F;
 }
+.bg-marron-clarito {
+    background-color: #db7d39;
+}
 .carousel-item img {
     height: 400px;
     object-fit: cover;
