@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: var(--verde-oscuro); border-bottom: 1px solid rgba(212, 184, 150, 0.2);">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--verde-oscuro); border-bottom: 1px solid rgba(212, 184, 150, 0.2);">
   <div class="container">
     <a class="navbar-brand" href="{{ url('/') }}" style="font-family: 'Playfair Display', serif; color: var(--crema); font-size: 1.4rem; letter-spacing: 0.05em;">
         Ondas de <span style="color: var(--beige); font-style: italic;">Sanación</span>

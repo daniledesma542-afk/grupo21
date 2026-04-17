@@ -34,71 +34,80 @@ body {
 }
 
 /* ===================================================
-   BARRA DE NAVEGACIÓN (NAVBAR)
+   NAVBAR AESTHETIC (Ajustado para Bootstrap)
    =================================================== */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  padding: 1.2rem 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: background 0.4s ease, box-shadow 0.4s ease;
-  background: transparent;
+.navbar-custom {
+    background-color: rgba(61, 79, 46, 0.95) !important;
+    backdrop-filter: blur(8px);
+    padding: 1.2rem 0;
+    transition: all 0.3s ease-in-out;
 }
 
-nav.scrolled {
-  background: rgba(61, 79, 46, 0.96);
-  box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+.navbar-brand-aesthetic {
+    font-family: 'Playfair Display', serif;
+    color: var(--crema) !important;
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
 }
 
-.nav-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  color: var(--crema);
-  letter-spacing: 0.05em;
-  text-decoration: none;
+.navbar-brand-aesthetic span {
+    color: var(--beige);
+    font-style: italic;
 }
 
-.nav-logo span {
-  color: var(--beige);
-  font-style: italic;
+.nav-item {
+    margin: 0 15px;
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 2.5rem;
-  margin-bottom: 0;
+.nav-link-aesthetic {
+    color: var(--crema) !important;
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    position: relative;
+    padding: 0.5rem 0 !important;
+    text-decoration: none;
 }
 
-.nav-links a {
-  text-decoration: none;
-  color: var(--crema);
-  font-size: 0.85rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-weight: 400;
-  position: relative;
-  transition: color 0.3s;
+.nav-link-aesthetic::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--beige);
+    transition: width 0.3s ease;
 }
 
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--beige);
-  transition: width 0.3s ease;
+.nav-link-aesthetic:hover::after {
+    width: 100%;
 }
 
-.nav-links a:hover::after {
-  width: 100%;
+/* ===================================================
+   CARRUSEL
+   =================================================== */
+.carousel-img {
+  height: 600px !important; 
+  object-fit: cover !important;
+  object-position: center !important;
+  width: 100% !important;
+}
+
+.carousel-caption h5 {
+    color: #F7F5F0; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
+}
+
+.carousel-caption p {
+    color: #EAE6DF;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+body {
+    color: #2C2C2C; /* El gris carbón */
 }
 
 /* ===================================================
@@ -215,60 +224,4 @@ footer {
 footer a {
   color: var(--beige);
   text-decoration: none;
-}
-/* ===================================================
-   NAVBAR AESTHETIC
-   =================================================== */
-.navbar-custom {
-    background-color: rgba(61, 79, 46, 0.95) !important; /* Verde oscuro con 5% de transparencia */
-    backdrop-filter: blur(8px); /* Efecto cristal moderno */
-    padding: 1.2rem 0;
-    transition: all 0.3s ease-in-out;
-}
-
-/* El logo elegante */
-.navbar-brand-aesthetic {
-    font-family: 'Playfair Display', serif;
-    color: var(--crema) !important;
-    font-size: 1.6rem;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-}
-
-.navbar-brand-aesthetic span {
-    color: var(--beige);
-    font-style: italic;
-}
-
-/* Separación entre los botones del menú */
-.nav-item {
-    margin: 0 15px; 
-}
-
-/* Tipografía de los enlaces */
-.nav-link-aesthetic {
-    color: var(--crema) !important;
-    font-family: 'Lato', sans-serif;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    position: relative;
-    padding: 0.5rem 0 !important; /* Limpia los márgenes por defecto de Bootstrap */
-    text-decoration: none;
-}
-
-/* La animación del subrayado al pasar el mouse */
-.nav-link-aesthetic::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background-color: var(--beige);
-    transition: width 0.3s ease;
-}
-
-.nav-link-aesthetic:hover::after {
-    width: 100%;
 }
