@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    @include('partials.navbar')
+    @include('partes.navbar')
 
     <div class="container" style="padding-top: 120px; min-height: 70vh;">
         <h2 style="font-family: 'Playfair Display', serif; color: var(--verde-oscuro);">Tu Carrito de Compras</h2>
@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    @include('partials.footer')
+    @include('partes.footer')
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
