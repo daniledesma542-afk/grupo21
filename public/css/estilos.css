@@ -78,20 +78,28 @@ body {
 }
 
 .carousel-img {
-  height: 600px !important; 
-  object-fit: cover !important;
-  object-position: center !important;
-  width: 100% !important;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
 }
-
+.carousel-caption {
+  bottom: 10px;
+  padding: 10px;
+}
 .carousel-caption h5 {
-    color: #F7F5F0; 
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
+  color: #F7F5F0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  font-size: clamp(1rem, 3vw, 1.5rem);
 }
-
 .carousel-caption p {
-    color: #EAE6DF;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  color: #EAE6DF;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+}
+@media (max-width: 576px) {
+  .carousel-caption p {
+    display: none;
+  }
 }
 
 body {

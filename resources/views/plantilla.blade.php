@@ -13,7 +13,7 @@
 <body>
 
 @include('partes.navbar')
-<main class="container mt-4">
+<main>
     @yield('contenido')
 </main>
 
