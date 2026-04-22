@@ -6,7 +6,7 @@
     <title>Ondas de Sanación | Inicio</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}"> 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
@@ -15,7 +15,7 @@
     @include('partials.navbar')
     @include('partials.carrusel')
 
-    <header class="hero" style="padding-top: 80px;">
+    <header class="hero" >
         <div class="hero-content">
             <p class="hero-eyebrow">Tienda holística · Corrientes, Argentina</p>
             <h1 class="hero-titulo">Encuentra tu<br /><em>equilibrio natural</em></h1>
@@ -36,6 +36,5 @@
     @include('partials.footer')
 
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
