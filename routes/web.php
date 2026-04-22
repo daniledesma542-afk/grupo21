@@ -3,15 +3,15 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('inicio');
+    return view('principal');
 });
 
-Route::get('/quienes-somos', function () {
-    return view('quienes-somos');
+Route::get('/quienes_somos', function () {
+    return view('quienes_somos');
 });
 
-Route::get('/catalogo', function () {
-    return view('catalogo');
+Route::get('/productos', function () {
+    return view('productos');
 });
 
 Route::get('/contacto', function () {
