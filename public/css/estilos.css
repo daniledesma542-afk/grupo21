@@ -94,11 +94,11 @@ body {
 .carousel-caption p {
   color: #EAE6DF;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  font-size: clamp(0.8rem, 2.5vw, 1rem) !important;
 }
 @media (max-width: 576px) {
   .carousel-caption p {
-    display: none;
+    font-size: 0.75rem !important;
   }
 }
 

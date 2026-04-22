@@ -21,3 +21,11 @@ Route::get('/contacto', function () {
 Route::get('/carrito', function () {
     return view('carrito');
 });
+
+Route::get('/terminos_usos', function () {
+    return view('terminos_usos');
+});
+
+Route::get('/comercializacion', function () {
+    return view('comercializacion');
+});
