@@ -1,26 +1,69 @@
 @extends('plantilla')
 
 @section('contenido')
-    <div class="container my-5">
-        <h1 class="text-center mb-4">Comercialización</h1>
+<div class="container my-5">
 
-        <p class="text-center">En esta sección encontrarás información sobre cómo comercializamos nuestros productos y servicios, así como nuestras políticas de venta y distribución.</p>
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                <img src="{{ asset('img/fotos-cuadradas/fotovelaycafe.jpg') }}" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">¿Cómo realizar una compra?</h5>
-                    <p class="card-text">Comprar en Ondas de Sanación es simple</p>
-                    <p class="card-text"><small class="text-body-secondary">1) Selecciona el producto que deseas comprar.</small></p>  
-                                        <p class="card-text"><small class="text-body-secondary">2) Agrega el producto al carrito.</small></p>  
-                                        <p class="card-text"><small class="text-body-secondary">3) Realiza el pago.</small></p>  
-                                        <p class="card-text"><small class="text-body-secondary">4) Recibe tu pedido en la comodidad de tu hogar.</small></p>
-                </div>
-                </div>
-            </div>
-            </div>
+    <!-- TITULO -->
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">Comercialización</h1>
+        <p class="text-muted">
+            Conocé cómo recibir tu pedido, pagar y todas nuestras modalidades disponibles.
+        </p>
     </div>
+
+    <div class="row g-4">
+
+        <!-- TIPOS DE ENTREGA -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow border-0 rounded-4 p-4">
+                <h5 class="fw-bold mb-3">📦 Tipos de entrega</h5>
+                
+                <p class="small text-muted">
+                    • Entrega a domicilio <br>
+                    • Retiro en punto acordado <br>
+                    • Entrega personalizada (según zona)
+                </p>
+            </div>
+        </div>
+
+        <!-- ENVIOS -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow border-0 rounded-4 p-4">
+                <h5 class="fw-bold mb-3">🚚 Formas de envío</h5>
+                
+                <p class="small text-muted">
+                    • Envíos dentro de la ciudad <br>
+                    • Envíos a todo el país <br>
+                    • Empresas de transporte (ej: correo)
+                </p>
+
+                <p class="small text-muted mt-2">
+                    ⏳ Tiempo estimado: 3 a 7 días hábiles
+                </p>
+            </div>
+        </div>
+
+        <!-- PAGOS -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow border-0 rounded-4 p-4">
+                <h5 class="fw-bold mb-3">💳 Métodos de pago</h5>
+                
+                <p class="small text-muted">
+                    • Mercado Pago <br>
+                    • Transferencia bancaria <br>
+                    • Efectivo (según modalidad)
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- INFO EXTRA -->
+    <div class="mt-5 text-center">
+        <p class="text-muted small">
+            Para más información o consultas, podés contactarnos directamente. Estamos para ayudarte ✨
+        </p>
+    </div>
+
+</div>
 @endsection
