@@ -224,3 +224,58 @@ footer a {
   color: var(--beige);
   text-decoration: none;
 }
+
+/* --- Paleta de Colores Editorial --- */
+.seccion-editorial {
+    background-color: #f2ede4; /* Un beige cálido con un toque arena */
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+.text-oliva {
+    color: #3b4c36 !important; /* Verde oliva profundo */
+}
+
+.text-dorado {
+    color: #b5986d !important; /* Dorado apagado/tierra */
+}
+
+.border-dorado {
+    border-color: #b5986d !important;
+}
+
+.letter-spacing-2 {
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+}
+
+/* --- Cajas y Cuadros --- */
+.bloque-texto-color {
+    background-color: #e6dfd1; /* Beige un poco más oscuro para resaltar el texto principal */
+    border-left: 4px solid #b5986d; /* Línea dorada a la izquierda */
+    border-radius: 4px;
+}
+
+.cuadro-flotante-color {
+    position: absolute;
+    bottom: 50px; /* Lo sube sobre la imagen */
+    left: -40px; /* Lo saca un poco de la foto hacia la izquierda */
+    background-color: #3b4c36; /* Fondo verde oliva fuerte */
+    color: #f2ede4; /* Letra color crema para máximo contraste */
+    max-width: 320px;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+/* Ajustes para la vista en celulares (Para que no se rompa la pantalla) */
+@media (max-width: 991px) {
+    .cuadro-flotante-color {
+        position: relative;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: -40px; /* Lo sube para que pise un poco la foto desde abajo */
+        width: 90%;
+    }
+}

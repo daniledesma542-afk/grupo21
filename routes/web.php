@@ -6,7 +6,7 @@ Route::get('/', function () {
     return view('principal');
 });
 
-Route::get('/quienes_somos', function () {
+Route::get('/quienes', function () {
     return view('quienes_somos');
 });
 
