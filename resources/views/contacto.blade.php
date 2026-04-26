@@ -48,7 +48,7 @@
                     
                     <div class="mb-3">
                         <label class="form-label font-serif fw-bold text-oliva">Correo Electrónico</label>
-                        <input type="email" class="form-control form-control-custom" placeholder="tu@email.com">
+                        <input type="email" class="form-control form-control-custom" placeholder="correo@email.com">
                     </div>
 
                     <div class="mb-3">

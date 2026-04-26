@@ -8,7 +8,7 @@
             <div class="col-lg-6 mb-5 mb-lg-0">
                 <span class="text-dorado text-uppercase fw-bold letter-spacing-2 mb-2 d-block">Nuestro Propósito</span>
                 <h1 class="display-3 text-oliva mb-4 font-serif">
-                    Quienes <span class="fst-italic">somos</span>
+                    Quiénes <span class="fst-italic">somos</span>
                 </h1>
                 
                 <div class="bloque-texto-color p-4 mb-4 shadow-sm">
