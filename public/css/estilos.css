@@ -279,3 +279,62 @@ footer a {
         width: 90%;
     }
 }
+
+/* --- Sección Contacto --- */
+.seccion-contacto {
+    background-color: #f2ede4; /* El beige cálido de la otra sección */
+    min-height: 80vh;
+}
+
+/* --- Estilos del Formulario Editorial --- */
+.formulario-estetico .form-label {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+}
+
+/* Diseño de las "cajitas" donde se escribe */
+.form-control-custom {
+    background-color: #ffffff; /* Fondo blanco puro */
+    border: 1px solid transparent; /* Sin borde por defecto */
+    border-radius: 0px; /* Bordes rectos, sin redondeo, para que sea "editorial" */
+    padding: 0.8rem 1rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #3b4c36;
+    transition: all 0.3s ease;
+}
+
+/* Cuando hacés clic para escribir (Focus) */
+.form-control-custom:focus {
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #b5986d; /* Le aparece un borde dorado sutil */
+    background-color: #faf9f7;
+}
+
+/* Color del texto de pista (placeholder) */
+.form-control-custom::placeholder {
+    color: #a8a8a8;
+    font-size: 0.85rem;
+}
+
+/* Botón grande de enviar */
+.btn-oliva-full {
+    background-color: #3b4c36; /* Verde oliva oscuro */
+    color: #f2ede4; /* Letras crema */
+    border: none;
+    border-radius: 0px; /* Bordes rectos */
+    transition: background-color 0.3s ease;
+}
+
+.btn-oliva-full:hover {
+    background-color: #2a3626; /* Se pone más oscuro al pasar el mouse */
+    color: #ffffff;
+}
+
+.transition-hover {
+    transition: transform 0.3s;
+}
+
+.transition-hover:hover {
+    transform: translateY(-3px); /* Los iconitos saltan un poco al pasar el mouse */
+}
