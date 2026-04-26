@@ -13,6 +13,7 @@
 <body>
 
 @include('partes.navbar')
+
 <main>
     @yield('contenido')
 </main>

@@ -9,4 +9,4 @@
                 <a href="{{ url('/productos') }}" class="btn-primario">Ver catálogo</a>
             </div>
         </div>
-    </header>
+</header>
