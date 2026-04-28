@@ -410,43 +410,184 @@ footer a {
 
 /* ===== CONTACTO ===== */
 
-.icono-social{
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: var(--crema);
-  color: var(--verde-oscuro);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: all .3s ease;
-  border: 1px solid var(--beige);
+/* 1. Fondo de la página y texto general */
+.seccion-contacto-nueva {
+    background-color: #f7f5ef !important; /* Crema clarito del fondo */
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
 }
 
-.icono-social:hover{
-  background: var(--beige);
-  transform: translateY(-3px);
+.text-oliva-oscuro {
+    color: #2c3e3a !important; /* Verde oliva bien oscuro para que se lea perfecto */
 }
 
-.form-control-custom{
-  border: 1px solid var(--crema-oscuro);
-  background: rgba(255,255,255,.6);
-  padding: .9rem 1rem;
-  border-radius: 12px;
-  color: var(--texto-oscuro);
+/* 2. El fondo de las "Tarjetas" (Izquierda y Formulario) */
+.tarjeta-contacto {
+    background-color: #e9e3d3 !important; /* Un beige/arena suave para que destaquen las cajas */
+    border-radius: 16px !important; /* Bordes bien redondeados como en tu foto */
+    border: none;
 }
 
-.form-control-custom:focus{
-  border-color: var(--beige);
-  box-shadow: 0 0 0 0.15rem rgba(212,184,150,.25);
-  background: white;
+/* 3. Las cajitas de texto donde escribe el usuario (Inputs) */
+.form-control-nueva {
+    background-color: #ffffff !important; /* Blanco puro para que resalten sobre el beige */
+    border: 1px solid transparent !important; 
+    color: #2c3e3a !important; 
+    border-radius: 10px !important; /* Bordes redondeados en las cajitas */
+    padding: 0.8rem 1rem;
+    transition: all 0.3s ease !important;
 }
 
-textarea.form-control-custom{
-  resize: none;
+.form-control-nueva::placeholder {
+    color: #a8b0a1 !important; /* Pista de texto sutil */
 }
 
-.seccion-editorial .texto-suave{
-  text-align: justify;
+.form-control-nueva:focus {
+    border: 1px solid #cba87c !important; /* Borde dorado al hacer clic */
+    box-shadow: 0 0 0 3px rgba(203, 168, 124, 0.2) !important;
+    outline: none;
+}
+
+/* 4. Botón Dorado */
+.btn-dorado-principal {
+    background-color: #cba87c !important; /* Dorado de tu marca */
+    color: #4b5e40 !important; /* Texto verde oliva */
+    border: none;
+    border-radius: 8px !important; /* Redondeado medio */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+    display: inline-block;
+}
+
+.btn-dorado-principal:hover {
+    background-color: #dfbc90 !important; 
+    color: #2c3e3a !important;
+    transform: translateY(-4px) !important; /* Animación de salto */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.btn-dorado-principal:active {
+    transform: translateY(-1px) !important;
+}
+
+/* 5. Íconos de Redes Sociales */
+.icono-social-nuevo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #2c3e3a !important; 
+    color: #2c3e3a !important; 
+    background-color: transparent;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.icono-social-nuevo:hover {
+    background-color: #2c3e3a !important; 
+    color: #f7f5ef !important; 
+    transform: translateY(-3px);
+}
+
+/* --- 6. Tarjeta Específica del Formulario (Verde Medio de la Paleta) --- */
+.tarjeta-formulario-verde {
+    background-color: #647b56 !important; /* Un verde oliva más suave y claro que el anterior */
+    border-radius: 16px !important;
+    border: none;
+}
+
+/* Letras color crema para que resalten sobre el verde nuevo */
+.text-crema {
+    color: #f7f5ef !important; 
+}
+
+/* ==========================================================================
+   ESTILOS DE TIENDA HOLÍSTICA (CATÁLOGO)
+   ========================================================================== */
+
+/* Fondo de la sección */
+.seccion-productos {
+    background-color: #f7f5ef !important;
+}
+
+/* Sidebar Estilizada */
+.sidebar-holistica {
+    background-color: #e9e3d3 !important; /* Arena/Beige suave */
+    border-radius: 16px;
+    position: sticky;
+    top: 20px;
+}
+
+.categorias-lista li {
+    margin-bottom: 15px;
+}
+
+.categorias-lista li a {
+    color: #2c3e3a !important;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 5px 0;
+}
+
+.categorias-lista li a:hover, 
+.categorias-lista li a.active {
+    color: #cba87c !important; /* Dorado al pasar el mouse */
+    padding-left: 10px;
+}
+
+.banner-sidebar {
+    background-color: #4b5e40; /* Verde oliva de la marca */
+    border-radius: 12px;
+}
+
+/* Tarjeta de Producto */
+.tarjeta-producto {
+    background-color: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+}
+
+.contenedor-imagen {
+    position: relative;
+    overflow: hidden;
+    background-color: #fcfcfc;
+}
+
+.contenedor-imagen img {
+    transition: transform 0.5s ease;
+}
+
+.tarjeta-producto:hover .contenedor-imagen img {
+    transform: scale(1.08); /* Efecto zoom suave */
+}
+
+/* Etiquetas flotantes (Badges) */
+.badge-holistico {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #cba87c; /* Dorado */
+    color: white;
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 2;
+}
+
+.bg-oliva {
+    background-color: #4b5e40 !important;
 }
