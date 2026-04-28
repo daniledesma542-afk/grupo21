@@ -29,3 +29,7 @@ Route::get('/terminos_usos', function () {
 Route::get('/comercializacion', function () {
     return view('comercializacion');
 });
+
+use App\Http\Controllers\ContactoController;
+
+Route::post('/contacto/enviar', [ContactoController::class, 'enviar'])->name('contacto.enviar');

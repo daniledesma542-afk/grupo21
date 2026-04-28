@@ -7,61 +7,117 @@
     <div class="text-center mb-5">
         <h1 class="fw-bold">Comercialización</h1>
         <p class="text-muted">
-            Conocé cómo recibir tu pedido, pagar y todas nuestras modalidades disponibles.
+            Comprá de forma simple, consciente y segura ✨
         </p>
     </div>
 
-    <div class="row g-4">
+    <!-- HERO / COMO COMPRAR (REDUCIDO Y CENTRADO) -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-8">
+            <div class="card card-aesthetic overflow-hidden">
+                <div class="card card-aesthetic card-hover overflow-hidden">
+                <div class="row g-0 ">
 
-        <!-- TIPOS DE ENTREGA -->
+                    <!-- IMAGEN -->
+                    <div class="col-md-5">
+                        <img src="{{ asset('img/fotos-cuadradas/fotovelaycafe.jpg') }}" 
+                             class="img-fluid w-100 h-100 object-fit-cover" 
+                             alt="Compra online">
+                    </div>
+
+                    <!-- TEXTO -->
+                    <div class="col-md-7">
+                        <div class="card-body p-4">
+
+                            <h4 class="fw-bold mb-3">¿Cómo comprar online?</h4>
+
+                            <div class="paso">
+                                <i class="bi bi-cart"></i>
+                                <span>Elegí tu producto</span>
+                            </div>
+
+                            <div class="paso">
+                                <i class="bi bi-person-check"></i>
+                                <span>Completá tus datos</span>
+                            </div>
+
+                            <div class="paso">
+                                <i class="bi bi-credit-card"></i>
+                                <span>Realizá el pago</span>
+                            </div>
+
+                            <div class="paso">
+                                <i class="bi bi-truck"></i>
+                                <span>Recibí tu pedido en tu hogar</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- CARDS PRINCIPALES -->
+    <div class="row g-4 text-center">
+
+        <!-- ENTREGA -->
         <div class="col-md-4">
-            <div class="card h-100 shadow border-0 rounded-4 p-4">
-                <h5 class="fw-bold mb-3">📦 Tipos de entrega</h5>
-                
-                <p class="small text-muted">
-                    • Entrega a domicilio <br>
-                    • Retiro en punto acordado <br>
-                    • Entrega personalizada (según zona)
+            <div class="card card-aesthetic card-hover h-100 p-4">
+
+                <i class="bi bi-box-seam icono-card"></i>
+
+                <h5 class="fw-bold mt-3">Tipos de entrega</h5>
+
+                <p class="small">
+                    Entrega a domicilio, retiro en punto acordado o entrega personalizada según tu ubicación.
                 </p>
+
             </div>
         </div>
 
-        <!-- ENVIOS -->
+        <!-- ENVIO -->
         <div class="col-md-4">
-            <div class="card h-100 shadow border-0 rounded-4 p-4">
-                <h5 class="fw-bold mb-3">🚚 Formas de envío</h5>
-                
-                <p class="small text-muted">
-                    • Envíos dentro de la ciudad <br>
-                    • Envíos a todo el país <br>
-                    • Empresas de transporte (ej: correo)
+            <div class="card card-aesthetic card-hover h-100 p-4">
+
+                <i class="bi bi-truck icono-card"></i>
+
+                <h5 class="fw-bold mt-3">Formas de envío</h5>
+
+                <p class="small">
+                    Envíos a todo el país mediante correo o entregas locales.
                 </p>
 
-                <p class="small text-muted mt-2">
-                    ⏳ Tiempo estimado: 3 a 7 días hábiles
+                <p class="small fw-semibold">
+                    ⏳ 3 a 7 días hábiles
                 </p>
+
             </div>
         </div>
 
-        <!-- PAGOS -->
+        <!-- PAGO -->
         <div class="col-md-4">
-            <div class="card h-100 shadow border-0 rounded-4 p-4">
-                <h5 class="fw-bold mb-3">💳 Métodos de pago</h5>
-                
-                <p class="small text-muted">
-                    • Mercado Pago <br>
-                    • Transferencia bancaria <br>
-                    • Efectivo (según modalidad)
+            <div class="card card-aesthetic card-hover h-100 p-4">
+
+                <i class="bi bi-credit-card icono-card"></i>
+
+                <h5 class="fw-bold mt-3">Métodos de pago</h5>
+
+                <p class="small">
+                    Mercado Pago, transferencia bancaria o efectivo según disponibilidad.
                 </p>
+
             </div>
         </div>
 
     </div>
 
-    <!-- INFO EXTRA -->
+    <!-- CONFIANZA -->
     <div class="mt-5 text-center">
-        <p class="text-muted small">
-            Para más información o consultas, podés contactarnos directamente. Estamos para ayudarte ✨
+        <p class="texto-suave">
+            Estamos para acompañarte en cada paso de tu compra 🤍
         </p>
     </div>
 
