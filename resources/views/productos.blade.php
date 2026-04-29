@@ -18,7 +18,7 @@
                 
                 <div class="d-flex justify-content-center align-items-center mt-4">
                     <span class="badge px-4 py-2 rounded-pill font-sans-serif small shadow-sm" style="background-color: #4b5e40; color: white; letter-spacing: 1px;">
-                        Mostrando 16 productos
+                        Mostrando 20 productos
                     </span>
                 </div>
                 
@@ -36,7 +36,7 @@
                         <h5 class="font-serif fw-bold text-oliva-oscuro mb-2">Vela de Canela</h5>
                         <p class="small text-muted mb-3 flex-grow-1">Calidez botánica. Vela especiada con notas de naranja, canela y anís estrellado. Hecha a mano.</p>
                         <p class="text-dorado-nuevo fw-bold fs-5 mb-3">$16.700</p>
-                        <a href="#" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
+                        <a href="{{ route('carrito') }}" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                         <h5 class="font-serif fw-bold text-oliva-oscuro mb-2">Vela de Eucalipto</h5>
                         <p class="small text-muted mb-3 flex-grow-1">Refugio natural. Notas botánicas de eucalipto y cedro en un diseño clásico ámbar.</p>
                         <p class="text-dorado-nuevo fw-bold fs-5 mb-3">$14.900</p>
-                        <a href="#" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
+                        <a href="{{ route('carrito') }}" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
                     </div>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                         <h5 class="font-serif fw-bold text-oliva-oscuro mb-2">Tarot Rider</h5>
                         <p class="small text-muted mb-3 flex-grow-1">El clásico indiscutido. Tarot Rider-Waite. Simbología vintage y la mejor puerta de entrada al tarot.</p>
                         <p class="text-dorado-nuevo fw-bold fs-5 mb-3">$11.200</p>
-                        <a href="#" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
+                        <a href="{{ route('carrito') }}" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
                     </div>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                         <h5 class="font-serif fw-bold text-oliva-oscuro mb-2">Serpentina</h5>
                         <p class="small text-muted mb-3 flex-grow-1">Energía y arraigo. Piedra Serpentina natural. Tu aliada para desbloquear, sanar y volver a tu centro.</p>
                         <p class="text-dorado-nuevo fw-bold fs-5 mb-3">$6.000</p>
-                        <a href="#" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
+                        <a href="{{ route('carrito') }}" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                         <h5 class="font-serif fw-bold text-oliva-oscuro mb-2">Sahumerio Rosas y Olíbano</h5>
                         <p class="small text-muted mb-3 flex-grow-1">Armonía y limpieza por Sagrada Madre. El equilibrio perfecto para purificar y endulzar la energía.</p>
                         <p class="text-dorado-nuevo fw-bold fs-5 mb-3">$4.800</p>
-                        <a href="#" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
+                        <a href="{{ route('carrito') }}" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
                     </div>
                 </div>
             </div>
@@ -108,7 +108,7 @@
                         <h5 class="font-serif fw-bold text-oliva-oscuro mb-2">Palo Santo y Rosas</h5>
                         <p class="small text-muted mb-3 flex-grow-1">Limpieza dulce. Sahumerio artesanal. Humo sagrado para purificar tu espacio y abrir el corazón.</p>
                         <p class="text-dorado-nuevo fw-bold fs-5 mb-3">$3.700</p>
-                        <a href="#" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
+                        <a href="{{ route('carrito') }}" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
                     </div>
                 </div>
             </div>
@@ -122,7 +122,7 @@
                         <h5 class="font-serif fw-bold text-oliva-oscuro mb-2">Palo Santo y Fresias</h5>
                         <p class="small text-muted mb-3 flex-grow-1">Frescura y renovación. Humo sagrado por Sagrada Madre para limpiar tu espacio y levantar la energía.</p>
                         <p class="text-dorado-nuevo fw-bold fs-5 mb-3">$5.400</p>
-                        <a href="#" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
+                        <a href="{{ route('carrito') }}" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
                     </div>
                 </div>
             </div>
@@ -137,7 +137,7 @@
                         <h5 class="font-serif fw-bold text-oliva-oscuro mb-2">Kit Aura Suave</h5>
                         <p class="small text-muted mb-3 flex-grow-1">Equilibra tu energía. Kit con productos para crear un ambiente armonioso y revitalizante.</p>
                         <p class="text-dorado-nuevo fw-bold fs-5 mb-3">$29.000</p>
-                        <a href="#" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
+                        <a href="{{ route('carrito') }}" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
                     </div>
                 </div>
             </div>
@@ -151,7 +151,7 @@
                         <h5 class="font-serif fw-bold text-oliva-oscuro mb-2">Kit Arcilla</h5>
                         <p class="small text-muted mb-3 flex-grow-1">Pausa terrenal. Kit de limpieza energética con piezas de arcilla, salvia y palo santo.</p>
                         <p class="text-dorado-nuevo fw-bold fs-5 mb-3">$31.000</p>
-                        <a href="#" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
+                        <a href="{{ route('carrito') }}" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
                     </div>
                 </div>
             </div>
@@ -166,7 +166,7 @@
                         <h5 class="font-serif fw-bold text-oliva-oscuro mb-2">Piedra Jaspe</h5>
                         <p class="small text-muted mb-3 flex-grow-1">Piedra de la tierra. Poderosa para la limpieza energética y el equilibrio. Ideal para rituales.</p>
                         <p class="text-dorado-nuevo fw-bold fs-5 mb-3">$2.700</p>
-                        <a href="#" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
+                        <a href="{{ route('carrito') }}" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
                     </div>
                 </div>
             </div>
@@ -180,7 +180,7 @@
                         <h5 class="font-serif fw-bold text-oliva-oscuro mb-2">Cuarzo Aura Angel</h5>
                         <p class="small text-muted mb-3 flex-grow-1">Luz y suavidad lunar. Cristales opalescentes pulidos para conectar con tu intuición y calma.</p>
                         <p class="text-dorado-nuevo fw-bold fs-5 mb-3">$2.400</p>
-                        <a href="#" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
+                        <a href="{{ route('carrito') }}" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
                     </div>
                 </div>
             </div>
@@ -194,7 +194,7 @@
                         <h5 class="font-serif fw-bold text-oliva-oscuro mb-2">Amatista</h5>
                         <p class="small text-muted mb-3 flex-grow-1">Piedra transmutadora. Poderosa para la limpieza energética y el equilibrio. Ideal para meditar.</p>
                         <p class="text-dorado-nuevo fw-bold fs-5 mb-3">$3.100</p>
-                        <a href="#" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
+                        <a href="{{ route('carrito') }}" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
                     </div>
                 </div>
             </div>
@@ -208,7 +208,7 @@
                         <h5 class="font-serif fw-bold text-oliva-oscuro mb-2">Aceite de Rosas</h5>
                         <p class="small text-muted mb-3 flex-grow-1">Aceite esencial de rosas para hidratación y rejuvenecimiento. Ideal para rutinas de cuidado personal.</p>
                         <p class="text-dorado-nuevo fw-bold fs-5 mb-3">$2.860</p>
-                        <a href="#" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
+                        <a href="{{ route('carrito') }}" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
                     </div>
                 </div>
             </div>
@@ -222,7 +222,7 @@
                         <h5 class="font-serif fw-bold text-oliva-oscuro mb-2">Aceite de Naranja</h5>
                         <p class="small text-muted mb-3 flex-grow-1">Alegría cítrica. Aceite esencial puro de naranja dulce. Vitalidad, frescura y energía positiva en cada gota.</p>
                         <p class="text-dorado-nuevo fw-bold fs-5 mb-3">$3.000</p>
-                        <a href="#" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
+                        <a href="{{ route('carrito') }}" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
                     </div>
                 </div>
             </div>
@@ -230,13 +230,13 @@
             <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="tarjeta-producto shadow-sm h-100 d-flex flex-column">
                     <div class="contenedor-imagen">
-                        <img src="{{ asset('img/fotos-productos/oráculoDeLaIntuicion.jpg') }}" alt="Oráculo de la Intuición" class="img-fluid w-100">
+                        <img src="{{ asset('img/fotos-productos/oraculoDeLaIntuicion.jpg') }}" alt="Oráculo de la Intuición" class="img-fluid w-100">
                     </div>
                     <div class="p-4 text-center d-flex flex-column flex-grow-1">
                         <h5 class="font-serif fw-bold text-oliva-oscuro mb-2">Oráculo de la Intuición</h5>
                         <p class="small text-muted mb-3 flex-grow-1">Inspiración diaria. Oráculo de bolsillo con mensajes claros y arte vibrante para despertar tu intuición.</p>
                         <p class="text-dorado-nuevo fw-bold fs-5 mb-3">$12.500</p>
-                        <a href="#" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
+                        <a href="{{ route('carrito') }}" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
                     </div>
                 </div>
             </div>
@@ -250,7 +250,7 @@
                         <h5 class="font-serif fw-bold text-oliva-oscuro mb-2">Oráculo de las Diosas</h5>
                         <p class="small text-muted mb-3 flex-grow-1">Poder femenino. Oráculo de bolsillo con símbolos sagrados y mensajes inspiradores para guiar tu camino.</p>
                         <p class="text-dorado-nuevo fw-bold fs-5 mb-3">$15.000</p>
-                        <a href="#" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
+                        <a href="{{ route('carrito') }}" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
                     </div>
                 </div>
             </div>
@@ -263,11 +263,49 @@
                         <h5 class="font-serif fw-bold text-oliva-oscuro mb-2">Aceite de Manzanilla</h5>
                         <p class="small text-muted mb-3 flex-grow-1">Calma y confort. Aceite esencial puro de manzanilla para aliviar el estrés y promover el sueño profundo.</p>
                         <p class="text-dorado-nuevo fw-bold fs-5 mb-3">$2.000</p>
-                        <a href="#" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
+                        <a href="{{ route('carrito') }}" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
                     </div>
                 </div>
             </div>
-
+             <div class="col-md-6 col-lg-4 col-xl-3">
+                <div class="tarjeta-producto shadow-sm h-100 d-flex flex-column">
+                    <div class="contenedor-imagen">
+                        <img src="{{ asset('img/fotos-productos/sahumador.jpg') }}" alt="Sahumador" class="img-fluid w-100">
+                    </div>
+                    <div class="p-4 text-center d-flex flex-column flex-grow-1">
+                        <h5 class="font-serif fw-bold text-oliva-oscuro mb-2">Sahumador</h5>
+                        <p class="small text-muted mb-3 flex-grow-1">Purificación y equilibrio. Sahumador de calidad para crear un ambiente espiritual armonioso.</p>
+                        <p class="text-dorado-nuevo fw-bold fs-5 mb-3">$4.300</p>
+                        <a href="{{ route('carrito') }}" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3">
+                <div class="tarjeta-producto shadow-sm h-100 d-flex flex-column">
+                    <div class="contenedor-imagen">
+                        <img src="{{ asset('img/fotos-productos/budasEstatuas.jpg') }}" alt="Budas Estatuas" class="img-fluid w-100">
+                    </div>
+                    <div class="p-4 text-center d-flex flex-column flex-grow-1">
+                        <h5 class="font-serif fw-bold text-oliva-oscuro mb-2">Budas Estatuas</h5>
+                        <p class="small text-muted mb-3 flex-grow-1">Inspiración y paz. Budas de cerámica para cultivar la meditación y la serenidad.</p>
+                        <p class="text-dorado-nuevo fw-bold fs-5 mb-3">$12.400</p>
+                        <a href="{{ route('carrito') }}" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3">
+                <div class="tarjeta-producto shadow-sm h-100 d-flex flex-column">
+                    <div class="contenedor-imagen">
+                        <img src="{{ asset('img/fotos-productos/hornitoNube.jpg') }}" alt="Hornito Nube" class="img-fluid w-100">
+                    </div>
+                    <div class="p-4 text-center d-flex flex-column flex-grow-1">
+                        <h5 class="font-serif fw-bold text-oliva-oscuro mb-2">Hornito Nube</h5>
+                        <p class="small text-muted mb-3 flex-grow-1">Calidad y estilo. Hornito de diseño moderno para disfrutar de tu aroma favorito.</p>
+                        <p class="text-dorado-nuevo fw-bold fs-5 mb-3">$7.800</p>
+                        <a href="{{ route('carrito') }}" class="btn btn-dorado-principal w-100 mt-auto">Añadir al Carrito</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
