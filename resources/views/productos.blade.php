@@ -101,6 +101,7 @@
             <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="tarjeta-producto shadow-sm h-100 d-flex flex-column">
                     <div class="contenedor-imagen">
+                        <span class="badge-holistico">Destacado</span>
                         <img src="{{ asset('img/fotos-productos/sahumerioPaloSantoRosas.jpg') }}" alt="Sahumerio Palo Santo y Rosas" class="img-fluid w-100">
                     </div>
                     <div class="p-4 text-center d-flex flex-column flex-grow-1">
