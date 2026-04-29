@@ -375,7 +375,9 @@ footer a {
 .texto-suave {
   color: var(--texto-suave);
 }
-
+.seccion-editorial .texto-suave{
+  text-align: justify;
+}
 /* Responsive */
 @media (max-width: 768px) {
 
