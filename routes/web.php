@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactoController;
+
+/*
+Declaracion de rutas
+*/
 
 Route::get('/', function () {
     return view('principal');
@@ -18,18 +23,17 @@ Route::get('/contacto', function () {
     return view('contacto');
 });
 
-Route::get('/carrito', function () {
-    return view('carrito');
-});
-
-Route::get('/terminos_usos', function () {
-    return view('terminos_usos');
-});
-
 Route::get('/comercializacion', function () {
     return view('comercializacion');
 });
 
-use App\Http\Controllers\ContactoController;
+Route::get('/carrito', function () {
+    return view('carrito');
+})->name('carrito');
 
-Route::post('/contacto/enviar', [ContactoController::class, 'enviar'])->name('contacto.enviar');
+Route::get('/terminos_usos', function () {
+    return view('terminos_usos');
+})->name('terminos');
+
+Route::post('/contacto/enviar', [ContactoController::class, 'enviar'])
+    ->name('contacto.enviar');
