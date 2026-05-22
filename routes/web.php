@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\ProductoController;
 
 /*
 Declaracion de rutas
@@ -36,4 +37,6 @@ Route::get('/terminos-usos', function () {
 })->name('terminos');
 
 Route::post('/contacto/enviar', [ContactoController::class, 'enviar'])
-    ->name('contacto.enviar');
+->name('contacto.enviar');
+
+Route::get('/probar-crud', [ProductoController::class, 'probarCRUD']);
