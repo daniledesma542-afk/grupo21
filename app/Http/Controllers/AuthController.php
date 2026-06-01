@@ -58,7 +58,7 @@ class AuthController extends Controller{
             $request->session()->regenerate();
             
             // Redirección según el rol
-            if (\Illuminate\Support\Facades\Auth::user()->rol === 'admin') {
+            if (\Illuminate\Support\Facades\Auth::user()->rol->nombre === 'admin') {
                 return redirect('/admin');
             }
             
@@ -70,4 +70,14 @@ class AuthController extends Controller{
             'email' => 'El correo electrónico o la contraseña son incorrectos.',
         ])->withInput($request->only('email'));
     }
+
+    public function logout(Request $request)
+    {
+        \Illuminate\Support\Facades\Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        
+        return redirect('/');
+    }
+
 }

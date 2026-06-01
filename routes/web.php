@@ -45,8 +45,23 @@ Route::post('/contacto/enviar', [ContactoController::class, 'enviar'])
 Route::get('/probar-crud', [ProductoController::class, 'probarCRUD']);
 
 Route::get('/registro', [AuthController::class, 'formularioRegistro']);
-Route::get('/login', [AuthController::class, 'formularioLogin']);
+Route::get('/login', [AuthController::class, 'formularioLogin'])->name('login');
 Route::post('/registro', [AuthController::class, 'registrar'])->name('registrar');
 Route::post('/login', [AuthController::class, 'autenticar']);
-Route::get('/cliente', [ClienteController::class, 'panel']);
-Route::get('/admin', [AdminController::class, 'dashboard']);
+
+// Ruta para cerrar sesión
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Rutas protegidas SOLO para Administradores
+Route::middleware(['auth', 'rol:admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'dashboard']);
+});
+
+// Rutas protegidas SOLO para Clientes
+Route::middleware(['auth', 'rol:cliente'])->group(function () {
+    Route::get('/cliente', [ClienteController::class, 'panel']);
+});
+
+Route::delete('/admin/productos/{id}', [ProductoController::class, 'destroy']);Route::delete('/admin/productos/{id}', [ProductoController::class, 'destroy']);
+
+Route::get('/admin/productos', [ProductoController::class, 'index']);
