@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Producto; // ¡Súper importante para que Laravel sepa de qué tabla hablamos!
+use App\Models\Producto; 
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -23,22 +23,26 @@ class ProductoController extends Controller
         return view('backend.crear_producto'); 
     }
 
-    // Recibe los datos del formulario y los guarda en la base de datos
-    public function store(Request $request)
+   public function store(Request $request)
     {
-        // 1. Validamos que no te dejen campos vacíos o pongan letras en el precio
         $request->validate([
-            'nombre' => 'required|string|max:255',
-            'descripcion' => 'nullable|string',
-            'precio' => 'required|numeric|min:0',
-            'stock' => 'required|integer|min:0',
+            'nombre' => 'required',
+            'precio' => 'required',
+            'stock' => 'required',
+            'imagen' => 'required|image' 
         ]);
 
-        // 2. Guardamos el producto en la tabla
-        Producto::create($request->all());
+        $rutaImagen = $request->file('imagen')->store('fotos-productos', 'public');
 
-        // 3. Volvemos al panel con un mensajito de éxito
-        return redirect('/admin')->with('success', '¡Producto cargado exitosamente!');
+        Producto::create([
+            'nombre' => $request->nombre,
+            'descripcion' => $request->descripcion,
+            'precio' => $request->precio,
+            'stock' => $request->stock,
+            'imagen' => $rutaImagen,
+        ]);
+
+        return redirect('/admin/productos')->with('mensaje', 'Producto guardado');
     }
 
     // Elimina un producto de la base de datos

@@ -11,6 +11,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        // Dejamos un solo alias, el que usás en tus rutas
         $middleware->alias([
             'rol' => \App\Http\Middleware\CheckRol::class,
         ]);

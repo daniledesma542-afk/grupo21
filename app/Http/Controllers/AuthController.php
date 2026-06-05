@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Usuario; // Importamos tu modelo correcto
 
 class AuthController extends Controller{
 
@@ -15,13 +16,11 @@ class AuthController extends Controller{
     }
 
     public function registrar(Request $request) {
-        // Validamos los datos y definimos los mensajes en español
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:usuarios', // Cambiamos users por usuarios
             'password' => 'required|min:6|confirmed'
         ], [
-            // Aquí personalizas cada mensaje de error:
             'name.required' => 'El campo nombre y apellido es obligatorio.',
             'email.required' => 'El correo electrónico es obligatorio.',
             'email.email' => 'Por favor, ingresa un correo electrónico válido.',
@@ -31,19 +30,20 @@ class AuthController extends Controller{
             'password.confirmed' => 'Las contraseñas no coinciden.',
         ]);
 
-        // Si pasa la validación, crea el usuario
-        $usuario = \App\Models\User::create([
-            'name' => $request->name,
+        // Acá usamos el modelo Usuario y el campo "nombre"
+        $usuario = Usuario::create([
+            'nombre' => $request->name, 
             'email' => $request->email,
             'password' => \Illuminate\Support\Facades\Hash::make($request->password),
+            'rol_id' => 2, // Le asignamos un rol_id por defecto (ej: 2 = cliente) para que no tire error
         ]);
 
         \Illuminate\Support\Facades\Auth::login($usuario);
 
         return redirect('/cliente');
     }
+
     public function autenticar(Request $request) {
-        // Validamos los campos del login con mensajes en español
         $credenciales = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
@@ -53,11 +53,9 @@ class AuthController extends Controller{
             'password.required' => 'La contraseña es obligatoria.',
         ]);
 
-        // Intentamos iniciar sesión
         if (\Illuminate\Support\Facades\Auth::attempt($credenciales)) {
             $request->session()->regenerate();
             
-            // Redirección según el rol
             if (\Illuminate\Support\Facades\Auth::user()->rol->nombre === 'admin') {
                 return redirect('/admin');
             }
@@ -65,7 +63,6 @@ class AuthController extends Controller{
             return redirect('/cliente');
         }
 
-        // Si falla, vuelve atrás manteniendo el email
         return back()->withErrors([
             'email' => 'El correo electrónico o la contraseña son incorrectos.',
         ])->withInput($request->only('email'));
@@ -79,5 +76,4 @@ class AuthController extends Controller{
         
         return redirect('/');
     }
-
 }

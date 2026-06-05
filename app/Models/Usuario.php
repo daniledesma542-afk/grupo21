@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Usuario extends Authenticatable
 {
-    use Notifiable, SoftDeletes;
+    use Notifiable;
 
     protected $table = 'usuarios';
 
