@@ -1,58 +1,127 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Cuenta - Ondas de Sanación</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
-    
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="#">Ondas de Sanación</a>
-            <div class="d-flex text-white align-items-center">
-                <span class="me-3">Hola, <strong>{{ auth()->user()->name }}</strong></span>
-            </div>
-        </div>
-    </nav>
+@extends('plantilla')
 
-    <div class="container mt-5">
+@section('contenido')
+
+<section class="py-5" style="background-color: var(--blanco-roto); min-height: 80vh;">
+    <div class="container">
+
+        <!-- Bienvenida -->
+        <div class="text-center mb-5">
+            <h1 class="hero-titulo">
+                Bienvenida, <em>{{ auth()->user()->nombre }}</em>
+            </h1>
+
+            <p class="texto-suave">
+                Gestioná tus compras y explorá nuestros productos holísticos.
+            </p>
+        </div>
+
         <div class="row">
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm text-center pt-4 pb-3 h-100">
-                    <h4 class="mb-1">{{ auth()->user()->name }}</h4>
-                    <p class="text-muted mb-3">{{ auth()->user()->email }}</p>
-                    <div>
-                        <span class="badge bg-info text-dark fs-6">Cliente</span>
+
+            <!-- PERFIL -->
+            <div class="col-lg-4 mb-4">
+
+                <div class="card-aesthetic p-4 text-center h-100">
+
+                    <div class="mb-3">
+                        <i class="bi bi-person-circle"
+                           style="font-size: 5rem; color: var(--verde-medio);"></i>
                     </div>
+
+                    <h3 style="font-family: 'Playfair Display', serif;">
+                        {{ auth()->user()->nombre }}
+                    </h3>
+
+                    <p class="texto-suave mb-3">
+                        {{ auth()->user()->email }}
+                    </p>
+
+                    <span class="badge bg-oliva fs-6">
+                        Cliente
+                    </span>
+
                 </div>
+
             </div>
 
-            <div class="col-md-8">
+            <!-- OPCIONES -->
+            <div class="col-lg-8">
+
                 <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <div class="card shadow-sm h-100 py-4">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Mi carrito</h5>
-                                <p class="card-text text-muted">Revisá los productos que agregaste</p>
-                                <a href="#" class="btn btn-primary px-4 mt-2">Ver carrito</a>
+
+                    <!-- CARRITO -->
+                    <div class="col-md-6 mb-4">
+
+                        <div class="card-aesthetic card-hover h-100 p-4 text-center">
+
+                            <div class="mb-3">
+                                <i class="bi bi-cart3 icono-card"></i>
                             </div>
+
+                            <h4 class="mb-3">
+                                Mi Carrito
+                            </h4>
+
+                            <p class="texto-suave">
+                                Revisá los productos que agregaste para tu próxima compra.
+                            </p>
+
+                            <a href="/carrito" class="btn-primario mt-3">
+                                Ver carrito
+                            </a>
+
                         </div>
+
                     </div>
-                    
-                    <div class="col-md-6 mb-3">
-                        <div class="card shadow-sm h-100 py-4">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Productos</h5>
-                                <p class="card-text text-muted">Explorá nuestro catálogo de sanación</p>
-                                <a href="#" class="btn btn-outline-primary px-4 mt-2">Ver productos</a>
+
+                    <!-- PRODUCTOS -->
+                    <div class="col-md-6 mb-4">
+
+                        <div class="card-aesthetic card-hover h-100 p-4 text-center">
+
+                            <div class="mb-3">
+                                <i class="bi bi-flower1 icono-card"></i>
                             </div>
+
+                            <h4 class="mb-3">
+                                Productos
+                            </h4>
+
+                            <p class="texto-suave">
+                                Descubrí nuestro catálogo de artículos para tu bienestar.
+                            </p>
+
+                            <a href="/productos" class="btn-primario mt-3">
+                                Ver productos
+                            </a>
+
                         </div>
+
                     </div>
+
                 </div>
+
+                <!-- CERRAR SESIÓN -->
+                <div class="text-center mt-4">
+
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+
+                        <button type="submit" class="btn"
+                        style="background-color: var(--verde-oscuro);
+                            color: var(--crema);
+                            border: 1px solid var(--beige);">
+                         Cerrar sesión
+                    </button>
+                    </form>
+
+                </div>
+
             </div>
+
         </div>
+
     </div>
-</body>
-</html>
+</section>
+
+@endsection

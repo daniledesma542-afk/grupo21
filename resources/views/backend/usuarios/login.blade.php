@@ -1,57 +1,102 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión - Ondas De Sanación</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
-    <div class="container mt-5">
+@extends('plantilla')
+
+@section('contenido')
+
+<section class="auth-section py-5">
+
+    <div class="container">
+
         <div class="row justify-content-center">
-            <div class="col-md-5">
-                <div class="card shadow-sm">
-                    <div class="card-header text-center bg-white">
-                        <h4 class="mt-2">Iniciar sesión</h4>
+
+            <div class="col-lg-5">
+
+                <div class="auth-card p-4 p-md-5">
+
+                    <div class="text-center mb-4">
+
+                        <h2 class="auth-title">
+                            Iniciar Sesión
+                        </h2>
+
+                        <p class="auth-subtitle">
+                            Accedé a tu cuenta para continuar.
+                        </p>
+
                     </div>
-                    <div class="card-body">
-                        
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul class="mb-0">
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
 
-                        <form action="/login" method="POST">
-                            
-                            @csrf
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Correo electrónico</label>
-                                <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
-                            </div>
+                    <form action="/login" method="POST">
 
-                            <div class="mb-4">
-                                <label for="password" class="form-label">Contraseña</label>
-                                <input type="password" name="password" class="form-control" required>
-                            </div>
+                        @csrf
 
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-                                <button type="reset" class="btn btn-light border">Limpiar</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="card-footer text-center bg-white">
-                        <small>¿No tenés cuenta? <a href="/registro">Registrate</a></small>
-                    </div>
+                        <div class="mb-3">
+
+                            <label class="form-label fw-bold">
+                                Correo electrónico
+                            </label>
+
+                            <input
+                                type="email"
+                                name="email"
+                                class="form-control form-control-nueva"
+                                value="{{ old('email') }}"
+                                required>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label class="form-label fw-bold">
+                                Contraseña
+                            </label>
+
+                            <input
+                                type="password"
+                                name="password"
+                                class="form-control form-control-nueva"
+                                required>
+
+                        </div>
+
+                        <div class="text-center">
+
+                            <button type="submit" class="btn-primario">
+                                Iniciar sesión
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                    <hr>
+
+                    <p class="text-center mb-0">
+
+                        ¿No tenés cuenta?
+
+                        <a href="/registro" class="auth-link">
+                            Registrate
+                        </a>
+
+                    </p>
+
                 </div>
+
             </div>
+
         </div>
+
     </div>
-</body>
-</html>
+
+</section>
+
+@endsection
