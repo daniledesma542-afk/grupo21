@@ -20,9 +20,7 @@ Route::get('/quienes', function () {
     return view('quienes_somos');
 });
 
-Route::get('/productos', function () {
-    return view('productos');
-});
+Route::get('/productos', [ProductoController::class, 'catalogo']);
 
 Route::get('/contacto', function () {
     return view('contacto');
@@ -32,18 +30,12 @@ Route::get('/comercializacion', function () {
     return view('comercializacion');
 });
 
-Route::get('/carrito', function () {
-    return view('carrito');
-})->name('carrito');
-
 Route::get('/terminos-usos', function () {
     return view('terminos-usos');
 })->name('terminos');
 
 Route::post('/contacto/enviar', [ContactoController::class, 'enviar'])
 ->name('contacto.enviar');
-
-Route::get('/probar-crud', [ProductoController::class, 'probarCRUD']);
 
 Route::get('/registro', [AuthController::class, 'formularioRegistro']);
 Route::get('/login', [AuthController::class, 'formularioLogin'])->name('login');
@@ -55,28 +47,25 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Rutas protegidas SOLO para Administradores
 Route::middleware(['auth', 'rol:admin'])->group(function () {
+
     Route::get('/admin', [AdminController::class, 'dashboard']);
-    
-    // Ver la lista de productos
+
     Route::get('/admin/productos', [ProductoController::class, 'index']);
-    
-    // Ver el formulario que armaste recién
-    Route::get('/admin/productos/crear', function () {
-        return view('backend.crear_productos');
-    });
-    
-    // Guardar el producto nuevo
+
+    Route::get('/admin/productos/crear', [ProductoController::class, 'create']);
+
     Route::post('/admin/productos', [ProductoController::class, 'store']);
+
+    Route::get('/admin/productos/{id}/editar', [ProductoController::class, 'edit']);
+    Route::put('/admin/productos/{id}', [ProductoController::class, 'update']);
+
+    Route::delete('/admin/productos/{id}', [ProductoController::class, 'destroy']);
 });
 
 // Rutas protegidas SOLO para Clientes
 Route::middleware(['auth', 'rol:cliente'])->group(function () {
     Route::get('/cliente', [ClienteController::class, 'panel']);
 });
-
-Route::delete('/admin/productos/{id}', [ProductoController::class, 'destroy']);Route::delete('/admin/productos/{id}', [ProductoController::class, 'destroy']);
-
-Route::get('/admin/productos', [ProductoController::class, 'index']);
 
 // Rutas del Carrito de Compras (Protegidas)
 Route::middleware(['auth'])->group(function () {

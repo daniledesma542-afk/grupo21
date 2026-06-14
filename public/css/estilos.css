@@ -684,3 +684,14 @@ footer a {
     color: var(--verde-oscuro);
     font-family: 'Playfair Display', serif;
 }
+
+.form-control {
+    border-radius: 12px;
+    border: 1px solid rgba(122, 145, 125, 0.35);
+    padding: 12px;
+}
+
+.form-control:focus {
+    border-color: var(--verde-medio);
+    box-shadow: 0 0 0 0.2rem rgba(122, 145, 125, 0.2);
+}

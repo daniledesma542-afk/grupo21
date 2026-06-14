@@ -1,69 +1,79 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Administración - Ondas de Sanación</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
-    
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="#">Ondas de Sanación</a>
-            <div class="d-flex text-white align-items-center">
-                <span class="me-3">Hola, <strong>{{ auth()->user()->name }}</strong></span>
-            </div>
-        </div>
-    </nav>
+@extends('plantilla')
 
-    <div class="container mt-5">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2>Panel de Administración</h2>
-            <span class="badge bg-primary fs-6">Admin</span>
+@section('contenido')
+<section class="py-5" style="background-color: var(--blanco-roto); min-height: 85vh;">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <p class="hero-eyebrow">Panel administrativo</p>
+            <h1 class="hero-titulo" style="color: var(--verde-oscuro);">
+                Administración de <em>Ondas de Sanación</em>
+            </h1>
         </div>
 
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header bg-white py-3">
-                        <h5 class="mb-0">Usuarios registrados</h5>
+        <div class="row g-4">
+
+            <!-- PERFIL ADMIN -->
+            <div class="col-lg-4">
+                <div class="card-aesthetic h-100 p-4 text-center card-hover">
+                    <div class="mb-3">
+                        <i class="bi bi-person-circle" style="font-size: 4rem; color: var(--verde-medio);"></i>
                     </div>
-                    <div class="card-body">
-                        <table class="table table-hover">
-                            <thead class="table-light">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Nombre</th>
-                                    <th>Email</th>
-                                    <th>Rol</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{{ auth()->user()->id }}</td>
-                                    <td>{{ auth()->user()->name }}</td>
-                                    <td>{{ auth()->user()->email }}</td>
-                                    <td><span class="badge bg-success">{{ auth()->user()->rol }}</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+
+                    <h4 style="font-family: 'Playfair Display', serif;">
+                        {{ auth()->user()->nombre }}
+                    </h4>
+
+                    <p class="texto-suave mb-2">
+                        {{ auth()->user()->email }}
+                    </p>
+
+                    <span class="badge px-3 py-2"
+                          style="background-color: var(--verde-medio);">
+                        {{ auth()->user()->rol->nombre }}
+                    </span>
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header bg-white py-3">
-                        <h5 class="mb-0">Accesos rápidos</h5>
-                    </div>
-                    <div class="card-body d-grid gap-3">
-                        <a href="#" class="btn btn-outline-primary">Gestionar productos</a>
-                        <a href="#" class="btn btn-outline-secondary">Ver pedidos</a>
-                    </div>
+            <!-- PRODUCTOS -->
+            <div class="col-lg-4">
+                <div class="card-aesthetic h-100 p-4 text-center card-hover">
+                    <i class="bi bi-box-seam icono-card mb-3"></i>
+
+                    <h4 style="font-family: 'Playfair Display', serif;">
+                        Productos
+                    </h4>
+
+                    <p class="texto-suave">
+                        Cargá, editá y administrá el catálogo.
+                    </p>
+
+                    <a href="/admin/productos" class="btn-primario mt-3">
+                        Gestionar
+                    </a>
                 </div>
             </div>
+
+            <!-- PEDIDOS -->
+            <div class="col-lg-4">
+                <div class="card-aesthetic h-100 p-4 text-center card-hover">
+                    <i class="bi bi-bag-check icono-card mb-3"></i>
+
+                    <h4 style="font-family: 'Playfair Display', serif;">
+                        Pedidos
+                    </h4>
+
+                    <p class="texto-suave">
+                        Consultá ventas y actualizá estados.
+                    </p>
+
+                    <a href="#" class="btn-primario mt-3">
+                        Ver pedidos
+                    </a>
+                </div>
+            </div>
+
         </div>
     </div>
-</body>
-</html>
+</section>
+@endsection
