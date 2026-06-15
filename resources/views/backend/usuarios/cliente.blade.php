@@ -20,7 +20,6 @@
 
             <!-- PERFIL -->
             <div class="col-lg-4 mb-4">
-
                 <div class="card-aesthetic p-4 text-center h-100">
 
                     <div class="mb-3">
@@ -41,29 +40,44 @@
                     </span>
 
                 </div>
-
             </div>
 
             <!-- OPCIONES -->
             <div class="col-lg-8">
-
                 <div class="row">
+                    
+                    <!-- PEDIDOS -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card-aesthetic card-hover h-100 p-4 text-center">
 
+                            <div class="mb-3">
+                                <i class="bi bi-box-seam icono-card"></i>
+                            </div>
+
+                            <h4 class="mb-3">Mis Pedidos</h4>
+
+                            <p class="texto-suave">
+                                Consultá el historial y estado de tus compras.
+                            </p>
+
+                            <a href="/cliente/pedidos" class="btn-primario mt-3">
+                                Ver pedidos
+                            </a>
+
+                        </div>
+                    </div>
                     <!-- CARRITO -->
-                    <div class="col-md-6 mb-4">
-
+                    <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card-aesthetic card-hover h-100 p-4 text-center">
 
                             <div class="mb-3">
                                 <i class="bi bi-cart3 icono-card"></i>
                             </div>
 
-                            <h4 class="mb-3">
-                                Mi Carrito
-                            </h4>
+                            <h4 class="mb-3">Mi Carrito</h4>
 
                             <p class="texto-suave">
-                                Revisá los productos que agregaste para tu próxima compra.
+                                Revisá los productos listos para comprar.
                             </p>
 
                             <a href="/carrito" class="btn-primario mt-3">
@@ -71,24 +85,20 @@
                             </a>
 
                         </div>
-
                     </div>
 
                     <!-- PRODUCTOS -->
-                    <div class="col-md-6 mb-4">
-
+                    <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card-aesthetic card-hover h-100 p-4 text-center">
 
                             <div class="mb-3">
                                 <i class="bi bi-flower1 icono-card"></i>
                             </div>
 
-                            <h4 class="mb-3">
-                                Productos
-                            </h4>
+                            <h4 class="mb-3">Productos</h4>
 
                             <p class="texto-suave">
-                                Descubrí nuestro catálogo de artículos para tu bienestar.
+                                Explorá nuestro catálogo holístico.
                             </p>
 
                             <a href="/productos" class="btn-primario mt-3">
@@ -96,25 +106,22 @@
                             </a>
 
                         </div>
-
                     </div>
 
                 </div>
 
                 <!-- CERRAR SESIÓN -->
                 <div class="text-center mt-4">
-
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
 
                         <button type="submit" class="btn"
                         style="background-color: var(--verde-oscuro);
-                            color: var(--crema);
-                            border: 1px solid var(--beige);">
-                         Cerrar sesión
-                    </button>
+                               color: var(--crema);
+                               border: 1px solid var(--beige);">
+                            Cerrar sesión
+                        </button>
                     </form>
-
                 </div>
 
             </div>

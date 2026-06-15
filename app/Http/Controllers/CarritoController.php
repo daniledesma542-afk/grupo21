@@ -79,26 +79,54 @@ class CarritoController extends Controller
         return back()->with('success', 'Producto eliminado');
     }
 
-    public function confirmar()
-    {
-        $carrito = $this->obtenerCarrito();
+public function confirmar()
+{
+    $carrito = $this->obtenerCarrito();
 
-        if ($carrito->detalles()->count() === 0) {
-            return back()->with('error', 'Tu carrito está vacío');
+    if ($carrito->detalles()->count() === 0) {
+        return back()->with('error', 'Tu carrito está vacío');
+    }
+
+    // Traemos los items con su producto
+    $items = $carrito->detalles()->with('producto')->get();
+
+    $total = $carrito->total;
+
+    // Verificar stock y descontar
+    foreach ($items as $item) {
+        $producto = $item->producto;
+
+        if (!$producto) {
+            return back()->with('error', 'Un producto ya no existe.');
         }
 
-        $items = $carrito->detalles()->with('producto')->get();
-        $total = $carrito->total;
+        if ($producto->stock < $item->cantidad) {
+            return back()->with('error', 'Uno de los productos ya no tiene stock suficiente.');
+        }
 
-        $carrito->update([
-            'estado' => 'confirmado',
-            'fecha_venta' => now(),
-        ]);
-
-        return redirect()->route('compra.confirmada')
-            ->with('items', $items)
-            ->with('total', $total);
+        $producto->stock -= $item->cantidad;
+        $producto->save();
     }
+
+    // Confirmar compra
+    $carrito->update([
+        'estado' => 'confirmado',
+        'fecha_venta' => now(),
+    ]);
+
+    // Convertimos recién ahora para mandar a la vista
+    $itemsParaVista = $items->map(function ($item) {
+        return [
+            'nombre' => $item->producto->nombre,
+            'cantidad' => $item->cantidad,
+            'subtotal' => $item->subtotal,
+        ];
+    });
+
+    return redirect()->route('compra.confirmada')
+        ->with('items', $itemsParaVista)
+        ->with('total', $total);
+}
 
     private function recalcularTotal(VentaCabecera $carrito)
     {

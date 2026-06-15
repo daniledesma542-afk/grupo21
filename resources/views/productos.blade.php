@@ -56,21 +56,24 @@
                                 ${{ number_format($producto->precio, 2, ',', '.') }}
                             </h5>
 
-                            <p class="small text-muted">
-                                Stock disponible: {{ $producto->stock }}
-                            </p>
+                           @auth
+                                @if($producto->stock > 0)
+                                    <form action="{{ route('carrito.agregar') }}" method="POST">
+                                        @csrf
 
-                            @auth
-                                <form action="{{ route('carrito.agregar') }}" method="POST">
-                                    @csrf
+                                        <input type="hidden" name="producto_id" value="{{ $producto->id }}">
+                                        <input type="hidden" name="cantidad" value="1">
 
-                                    <input type="hidden" name="producto_id" value="{{ $producto->id }}">
-                                    <input type="hidden" name="cantidad" value="1">
-
-                                    <button type="submit" class="btn-primario mt-2 w-100">
-                                        Agregar al carrito
+                                        <button type="submit" class="btn-primario mt-2 w-100">
+                                            Agregar al carrito
+                                        </button>
+                                    </form>
+                                @else
+                                    <button class="btn mt-2 w-100" disabled
+                                            style="background:#ccc; color:#666; cursor:not-allowed;">
+                                        Sin stock
                                     </button>
-                                </form>
+                                @endif
                             @else
                                 <a href="/login" class="btn-primario mt-2 d-inline-block w-100 text-center">
                                     Iniciar sesión para comprar

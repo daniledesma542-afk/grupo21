@@ -16,12 +16,12 @@
                     <ul class="list-group mb-4 text-start shadow-sm">
                         @foreach(session('items') as $item)
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                {{ $item->producto->nombre }} (x{{ $item->cantidad }})
-                                <span>${{ number_format($item->subtotal, 2, ',', '.') }}</span>
+                                {{ $item['nombre'] }} (x{{ $item['cantidad'] }})
+                                <span>${{ number_format($item['subtotal'], 2, ',', '.') }}</span>
                             </li>
                         @endforeach
                         <li class="list-group-item d-flex justify-content-between align-items-center fw-bold" style="background-color: var(--verde-oscuro); color: var(--crema);">
-                            TOTAL ABONADO
+                            TOTAL A ABONAR
                             <span>${{ number_format(session('total'), 2, ',', '.') }}</span>
                         </li>
                     </ul>

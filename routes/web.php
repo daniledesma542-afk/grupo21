@@ -65,6 +65,9 @@ Route::middleware(['auth', 'rol:admin'])->group(function () {
 // Rutas protegidas SOLO para Clientes
 Route::middleware(['auth', 'rol:cliente'])->group(function () {
     Route::get('/cliente', [ClienteController::class, 'panel']);
+    Route::get('/cliente/pedidos', [ClienteController::class, 'pedidos']);
+    Route::get('/cliente/pedidos/{id}', [ClienteController::class, 'detallePedido'])
+    ->name('cliente.pedido.detalle');
 });
 
 // Rutas del Carrito de Compras (Protegidas)

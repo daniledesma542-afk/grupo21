@@ -139,6 +139,14 @@ body {
 .hero-titulo {
   font-family: 'Playfair Display', serif;
   font-size: clamp(1.8rem, 3vw, 2.4rem);
+  color: var(--verde-oscuro);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.hero-titulo2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
   color: var(--crema);
   line-height: 1.2;
   margin-bottom: 1rem;
