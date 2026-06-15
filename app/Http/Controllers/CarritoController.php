@@ -110,7 +110,7 @@ public function confirmar()
 
     // Confirmar compra
     $carrito->update([
-        'estado' => 'confirmado',
+        'estado' => 'pendiente_pago',
         'fecha_venta' => now(),
     ]);
 

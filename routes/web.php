@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CarritoController;
+use App\Http\Controllers\PedidoAdminController;
 
 /*
 Declaracion de rutas
@@ -60,6 +61,15 @@ Route::middleware(['auth', 'rol:admin'])->group(function () {
     Route::put('/admin/productos/{id}', [ProductoController::class, 'update']);
 
     Route::delete('/admin/productos/{id}', [ProductoController::class, 'destroy']);
+
+    Route::get('/admin/pedidos', [PedidoAdminController::class, 'index'])
+        ->name('admin.pedidos');
+    
+    Route::get('/admin/pedidos/{id}', [PedidoAdminController::class, 'show'])
+    ->name('admin.pedidos.show');
+
+    Route::put('/admin/pedidos/{id}/estado', [AdminController::class, 'actualizarEstado'])
+    ->name('admin.pedidos.estado');
 });
 
 // Rutas protegidas SOLO para Clientes

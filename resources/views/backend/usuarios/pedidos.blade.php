@@ -51,7 +51,31 @@
                             <small class="text-muted d-block mb-2">Estado</small>
                             <span class="badge px-3 py-2"
                                   style="background-color: var(--verde-medio); color: var(--crema); border-radius: 20px;">
-                                {{ ucfirst($pedido->estado) }}
+                                @switch($pedido->estado)
+                                    @case('pendiente_pago')
+                                        Pendiente de Pago
+                                        @break
+
+                                    @case('pagado')
+                                        Pagado
+                                        @break
+
+                                    @case('preparando')
+                                        Preparando
+                                        @break
+
+                                    @case('enviado')
+                                        Enviado
+                                        @break
+
+                                    @case('entregado')
+                                        Entregado
+                                        @break
+
+                                    @case('cancelado')
+                                        Cancelado
+                                        @break
+                                @endswitch
                             </span>
                         </div>
                          {{-- Detalle de pedido --}}   

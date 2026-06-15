@@ -67,7 +67,7 @@
                         Consultá ventas y actualizá estados.
                     </p>
 
-                    <a href="#" class="btn-primario mt-3">
+                    <a href="{{ route('admin.pedidos') }}" class="btn-primario mt-3">
                         Ver pedidos
                     </a>
                 </div>
