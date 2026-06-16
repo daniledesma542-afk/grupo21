@@ -21,7 +21,7 @@ Route::get('/quienes', function () {
     return view('quienes_somos');
 });
 
-Route::get('/productos', [ProductoController::class, 'catalogo']);
+Route::get('/productos', [App\Http\Controllers\ProductoController::class, 'index'])->name('productos');
 
 Route::get('/contacto', function () {
     return view('contacto');

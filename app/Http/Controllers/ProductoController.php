@@ -7,14 +7,21 @@ use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
-    // Muestra la lista de todos los productos en el panel de administración
-    public function index()
-    {
+    public function index(Request $request)
+{
+    // Si el usuario eligió una categoría, la guardamos en $categoriaId
+    $categoriaId = $request->input('categoria_id');
+
+    if ($categoriaId) {
+        // Si hay categoría, buscamos solo los productos de esa categoría
+        $productos = Producto::where('categoria_id', $categoriaId)->get();
+    } else {
+        // Si no, mostramos todos los productos como siempre
         $productos = Producto::all();
-        
-        // Acá lo mandamos a tu vista del panel. 
-        return view('backend.productos', compact('productos'));
     }
+
+    return view('productos', compact('productos'));
+}
 
     // Muestra el formulario vacío para cargar un producto nuevo
     public function create()

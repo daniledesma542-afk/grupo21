@@ -90,18 +90,23 @@
                     </div>
                 </div>
 
-                <div class="d-flex justify-content-end mt-4">
-                    <form method="POST" action="{{ route('carrito.confirmar') }}">
-                        @csrf
-                        <button type="submit"
-                                class="btn px-4 py-2 fs-5"
-                                style="background-color: var(--verde-oscuro); color: var(--crema);">
-                            Confirmar Compra
-                            <i class="bi bi-check-circle ms-2"></i>
-                        </button>
-                    </form>
-                </div>
+                {{-- CONTENEDOR PARA ALINEAR LOS DOS BOTONES A LA DERECHA --}}
+              <div class="d-flex justify-content-end gap-3 mt-4">
+    
+                     <a href="{{ route('productos') }}" class="btn" 
+                        style="border: 1px solid var(--verde-oscuro); color: var(--verde-oscuro); border-radius: 50px; padding: 10px 25px; font-family: 'Playfair Display', serif; text-decoration: none; transition: 0.3s;">
+                        <i class="bi bi-arrow-left"></i> Seguir comprando
+                    </a>
 
+                    <form action="{{ route('carrito.confirmar') }}" method="POST">
+                       @csrf
+                       <button type="submit" class="btn" 
+                               style="background-color: var(--verde-oscuro); color: white; border-radius: 50px; padding: 10px 25px; font-family: 'Playfair Display', serif; transition: 0.3s;">
+                          Confirmar Compra <i class="bi bi-check-circle"></i>
+                       </button>
+                    </form>
+
+                </div>
             @else
                 <div class="text-center py-5">
                     <i class="bi bi-bag-x"

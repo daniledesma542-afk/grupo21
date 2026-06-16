@@ -20,7 +20,7 @@
                         <!-- Producto -->
                         <div class="col-6 col-md-3">
                             <div class="tarjeta-producto shadow-sm h-100 d-flex flex-column">
-                                <img src="{{ asset('img/fotos-productos/velaCanela.jpg') }}" class="img-fluid">
+                                <img src="{{ asset('img/fotos-productos/1781475826_velaCanela.jpg') }}" class="img-fluid">
                                 <div class="p-3 text-center d-flex flex-column flex-grow-1">
                                     <h6 class="fw-bold">Vela Canela</h6>
                                     <p class="fw-bold text-dorado-nuevo">$16.700</p>
@@ -46,7 +46,7 @@
 
                         <div class="col-6 col-md-3">
                             <div class="tarjeta-producto shadow-sm h-100 d-flex flex-column">
-                                <img src="{{ asset('img/fotos-productos/tarotRider.jpg') }}" class="img-fluid">
+                                <img src="{{ asset('img/fotos-productos/178147518_tarotRider.jpg') }}" class="img-fluid">
                                 <div class="p-3 text-center d-flex flex-column flex-grow-1">
                                     <h6 class="fw-bold">Tarot Rider</h6>
                                     <p class="fw-bold text-dorado-nuevo">$11.200</p>
@@ -59,7 +59,7 @@
 
                         <div class="col-6 col-md-3">
                             <div class="tarjeta-producto shadow-sm h-100 d-flex flex-column">
-                                <img src="{{ asset('img/fotos-productos/amatista.jpg') }}" class="img-fluid">
+                                <img src="{{ asset('img/fotos-productos/1781476478_amatista.jpg') }}" class="img-fluid">
                                 <div class="p-3 text-center d-flex flex-column flex-grow-1">
                                     <h6 class="fw-bold">Amatista</h6>
                                     <p class="fw-bold text-dorado-nuevo">$3.100</p>
@@ -79,7 +79,7 @@
 
                         <div class="col-6 col-md-3">
                             <div class="tarjeta-producto shadow-sm h-100 d-flex flex-column">
-                                <img src="{{ asset('img/fotos-productos/kitAuraSuave.png') }}" class="img-fluid">
+                                <img src="{{ asset('img/fotos-productos/1781476265_kitAuraSuave.png') }}" class="img-fluid">
                                 <div class="p-3 text-center d-flex flex-column flex-grow-1">
                                     <h6 class="fw-bold">Kit Aura Suave</h6>
                                     <p class="fw-bold text-dorado-nuevo">$29.000</p>
@@ -92,7 +92,7 @@
 
                         <div class="col-6 col-md-3">
                             <div class="tarjeta-producto shadow-sm h-100 d-flex flex-column">
-                                <img src="{{ asset('img/fotos-productos/jaspe.jpg') }}" class="img-fluid">
+                                <img src="{{ asset('img/fotos-productos/1781476384_jaspe.jpg') }}" class="img-fluid">
                                 <div class="p-3 text-center d-flex flex-column flex-grow-1">
                                     <h6 class="fw-bold">Piedra Jaspe</h6>
                                     <p class="fw-bold text-dorado-nuevo">$2.700</p>
@@ -105,7 +105,7 @@
 
                         <div class="col-6 col-md-3">
                             <div class="tarjeta-producto shadow-sm h-100 d-flex flex-column">
-                                <img src="{{ asset('img/fotos-productos/aceiteRosas.jpg') }}" class="img-fluid">
+                                <img src="{{ asset('img/fotos-productos/1781476565_aceiteRosas.jpg') }}" class="img-fluid">
                                 <div class="p-3 text-center d-flex flex-column flex-grow-1">
                                     <h6 class="fw-bold">Aceite Rosas</h6>
                                     <p class="fw-bold text-dorado-nuevo">$2.860</p>
@@ -118,7 +118,7 @@
 
                         <div class="col-6 col-md-3">
                             <div class="tarjeta-producto shadow-sm h-100 d-flex flex-column">
-                                <img src="{{ asset('img/fotos-productos/oraculoDDiosas.jpg') }}" class="img-fluid">
+                                <img src="{{ asset('img/fotos-productos/1781476738_oraculoDDiosas.jpg') }}" class="img-fluid">
                                 <div class="p-3 text-center d-flex flex-column flex-grow-1">
                                     <h6 class="fw-bold">Oráculo Diosas</h6>
                                     <p class="fw-bold text-dorado-nuevo">$15.000</p>
