@@ -8,6 +8,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\PedidoAdminController;
+use App\Http\Controllers\MensajeAdminController;
 
 /*
 Declaracion de rutas
@@ -22,6 +23,7 @@ Route::get('/quienes', function () {
 });
 
 Route::get('/productos', [App\Http\Controllers\ProductoController::class, 'index'])->name('productos');
+Route::get('/productos/{id}', [App\Http\Controllers\ProductoController::class, 'show'])->name('producto.detalle');
 
 Route::get('/contacto', function () {
     return view('contacto');
@@ -70,6 +72,11 @@ Route::middleware(['auth', 'rol:admin'])->group(function () {
 
     Route::put('/admin/pedidos/{id}/estado', [AdminController::class, 'actualizarEstado'])
     ->name('admin.pedidos.estado');
+
+    // Rutas para mensajes del admin
+    Route::get('/admin/mensajes', [MensajeAdminController::class, 'index'])->name('admin.mensajes');
+    Route::put('/admin/mensajes/{id}/leido', [MensajeAdminController::class, 'marcarLeido'])->name('admin.mensaje.leido');
+    Route::post('/admin/mensajes/{id}/responder', [MensajeAdminController::class, 'responder'])->name('admin.mensaje.responder');
 });
 
 // Rutas protegidas SOLO para Clientes
@@ -106,5 +113,7 @@ Route::middleware(['auth'])->group(function () {
     })->name('compra.confirmada');
 
     Route::get('/descargar-ticket', [CarritoController::class, 'descargarTicket'])->name('ticket.descargar');
-
+    
+    // Ruta para ver los usuarios
+    Route::get('/admin/usuarios', [AdminController::class, 'usuarios'])->name('admin.usuarios');
 });

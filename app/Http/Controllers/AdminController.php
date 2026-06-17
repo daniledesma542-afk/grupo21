@@ -46,4 +46,12 @@ class AdminController extends Controller
 
         return back()->with('success', 'Estado actualizado correctamente');
     }
+
+    public function usuarios()
+    {
+        // Traemos todos los usuarios registrados, incluyendo la información de su rol
+        $usuarios = \App\Models\Usuario::with('rol')->orderBy('created_at', 'desc')->get();
+        
+        return view('backend.admin.usuarios', compact('usuarios'));
+    }
 }

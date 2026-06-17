@@ -125,4 +125,12 @@ class ProductoController extends Controller
 
         return back()->with('success', 'Producto eliminado correctamente.');
     }
+
+    // Función para mostrar un solo producto en la vista del cliente
+    public function show($id)
+    {
+        $producto = Producto::findOrFail($id);
+        
+        return view('detalle_producto', compact('producto'));
+    }
 }

@@ -63,19 +63,32 @@
             @forelse($productos as $producto)
                 <div class="col-md-6 col-lg-4">
                     <div class="card-aesthetic h-100 card-hover p-3">
+                        
+                        {{-- ENLACE EN LA IMAGEN --}}
                         <div class="text-center mb-3">
-                            @if($producto->imagen)
-                                <img src="{{ asset($producto->imagen) }}" alt="{{ $producto->nombre }}" 
-                                     style="width: 100%; height: 280px; object-fit: cover; border-radius: 16px;">
-                            @else
-                                <div class="d-flex justify-content-center align-items-center" style="height:280px; background:#eee; border-radius:16px;">
-                                    <span class="text-muted">Sin imagen</span>
-                                </div>
-                            @endif
+                            <a href="{{ route('producto.detalle', $producto->id) }}">
+                                @if($producto->imagen)
+                                    <img src="{{ asset($producto->imagen) }}" alt="{{ $producto->nombre }}" 
+                                         style="width: 100%; height: 280px; object-fit: cover; border-radius: 16px; transition: 0.3s;"
+                                         onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+                                @else
+                                    <div class="d-flex justify-content-center align-items-center" style="height:280px; background:#eee; border-radius:16px;">
+                                        <span class="text-muted">Sin imagen</span>
+                                    </div>
+                                @endif
+                            </a>
                         </div>
 
                         <div class="text-center">
-                            <h4 style="font-family:'Playfair Display', serif;">{{ $producto->nombre }}</h4>
+                            
+                            {{-- ENLACE EN EL TÍTULO --}}
+                            <a href="{{ route('producto.detalle', $producto->id) }}" class="text-decoration-none" style="color: inherit;">
+                                <h4 style="font-family:'Playfair Display', serif; transition: 0.3s;" 
+                                    onmouseover="this.style.color='var(--verde-medio)'" onmouseout="this.style.color='inherit'">
+                                    {{ $producto->nombre }}
+                                </h4>
+                            </a>
+                            
                             <p class="texto-suave mb-3">{{ $producto->descripcion }}</p>
                             <h5 style="color: var(--verde-medio); font-weight: bold;">
                                 ${{ number_format($producto->precio, 2, ',', '.') }}

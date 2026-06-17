@@ -13,62 +13,71 @@
 
         <div class="row g-4">
 
-            <!-- PERFIL ADMIN -->
             <div class="col-lg-4">
                 <div class="card-aesthetic h-100 p-4 text-center card-hover">
                     <div class="mb-3">
                         <i class="bi bi-person-circle" style="font-size: 4rem; color: var(--verde-medio);"></i>
                     </div>
-
                     <h4 style="font-family: 'Playfair Display', serif;">
                         {{ auth()->user()->nombre }}
                     </h4>
-
                     <p class="texto-suave mb-2">
                         {{ auth()->user()->email }}
                     </p>
-
-                    <span class="badge px-3 py-2"
-                          style="background-color: var(--verde-medio);">
+                    <span class="badge px-3 py-2" style="background-color: var(--verde-medio);">
                         {{ auth()->user()->rol->nombre }}
                     </span>
                 </div>
             </div>
 
-            <!-- PRODUCTOS -->
+            <!-- USUARIOS -->
             <div class="col-lg-4">
                 <div class="card-aesthetic h-100 p-4 text-center card-hover">
-                    <i class="bi bi-box-seam icono-card mb-3"></i>
-
-                    <h4 style="font-family: 'Playfair Display', serif;">
-                        Productos
-                    </h4>
-
-                    <p class="texto-suave">
-                        Cargá, editá y administrá el catálogo.
-                    </p>
-
-                    <a href="/admin/productos" class="btn-primario mt-3">
-                        Gestionar
-                    </a>
+                    <i class="bi bi-people icono-card mb-3" style="font-size: 3rem; color: var(--verde-medio);"></i>
+                    <h4 style="font-family: 'Playfair Display', serif;">Usuarios</h4>
+                    <p class="texto-suave">Visualizá a los clientes registrados.</p>
+                    <a href="{{ route('admin.usuarios') }}" class="btn-primario mt-3">Ver usuarios</a>
                 </div>
             </div>
 
-            <!-- PEDIDOS -->
             <div class="col-lg-4">
                 <div class="card-aesthetic h-100 p-4 text-center card-hover">
-                    <i class="bi bi-bag-check icono-card mb-3"></i>
+                    <i class="bi bi-box-seam icono-card mb-3" style="font-size: 3rem; color: var(--verde-medio);"></i>
+                    <h4 style="font-family: 'Playfair Display', serif;">Productos</h4>
+                    <p class="texto-suave">Cargá, editá y administrá el catálogo.</p>
+                    <a href="/admin/productos" class="btn-primario mt-3">Gestionar</a>
+                </div>
+            </div>
 
-                    <h4 style="font-family: 'Playfair Display', serif;">
-                        Pedidos
-                    </h4>
+            <div class="col-lg-4">
+                <div class="card-aesthetic h-100 p-4 text-center card-hover">
+                    <i class="bi bi-bag-check icono-card mb-3" style="font-size: 3rem; color: var(--verde-medio);"></i>
+                    <h4 style="font-family: 'Playfair Display', serif;">Pedidos</h4>
+                    <p class="texto-suave">Consultá ventas y actualizá estados.</p>
+                    <a href="{{ route('admin.pedidos') }}" class="btn-primario mt-3">Ver pedidos</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card-aesthetic h-100 p-4 text-center card-hover">
+                    <i class="bi bi-envelope-at icono-card mb-3" style="font-size: 3rem; color: var(--verde-medio);"></i>
+                    <h4 style="font-family: 'Playfair Display', serif;">Consultas</h4>
+                    
+                    @php
+                        $nuevos = \App\Models\Mensaje::where('leido', false)->count();
+                    @endphp
 
                     <p class="texto-suave">
-                        Consultá ventas y actualizá estados.
+                        Gestioná los mensajes de contacto.
                     </p>
 
-                    <a href="{{ route('admin.pedidos') }}" class="btn-primario mt-3">
-                        Ver pedidos
+                    <a href="{{ route('admin.mensajes') }}" class="btn-primario mt-3 position-relative">
+                        Ver mensajes
+                        @if($nuevos > 0)
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                {{ $nuevos }}
+                            </span>
+                        @endif
                     </a>
                 </div>
             </div>
