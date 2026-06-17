@@ -79,10 +79,17 @@
                             </span>
                         </div>
                          {{-- Detalle de pedido --}}   
-                        <div class="text-end mt-3">
+                        {{-- Botones de acción --}}   
+                        <div class="text-end mt-3 d-flex justify-content-end gap-2">
+                            <a href="{{ route('cliente.pedido.ticket', $pedido->id) }}" 
+                               class="btn btn-sm d-flex align-items-center gap-1" 
+                               style="border: 2px solid var(--verde-oscuro); color: var(--verde-oscuro); background-color: transparent; font-weight: 500;">
+                                <i class="bi bi-file-earmark-pdf"></i> Ticket
+                            </a>
+
                             <a href="{{ route('cliente.pedido.detalle', $pedido->id) }}"
-                            class="btn btn-sm"
-                            style="background-color: var(--beige); color: var(--verde-oscuro);">
+                               class="btn btn-sm d-flex align-items-center"
+                               style="background-color: var(--beige); color: var(--verde-oscuro); font-weight: 500;">
                                 Ver detalle
                             </a>
                         </div>

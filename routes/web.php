@@ -78,6 +78,8 @@ Route::middleware(['auth', 'rol:cliente'])->group(function () {
     Route::get('/cliente/pedidos', [ClienteController::class, 'pedidos']);
     Route::get('/cliente/pedidos/{id}', [ClienteController::class, 'detallePedido'])
     ->name('cliente.pedido.detalle');
+    Route::get('/cliente/pedidos/{id}/ticket', [ClienteController::class, 'descargarTicketHistorial'])
+    ->name('cliente.pedido.ticket');
 });
 
 // Rutas del Carrito de Compras (Protegidas)
