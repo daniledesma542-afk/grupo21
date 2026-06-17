@@ -51,7 +51,7 @@ Route::middleware(['auth', 'rol:admin'])->group(function () {
 
     Route::get('/admin', [AdminController::class, 'dashboard']);
 
-    Route::get('/admin/productos', [ProductoController::class, 'index']);
+    Route::get('/admin/productos', [ProductoController::class, 'adminIndex'])->name('admin.productos.index');
 
     Route::get('/admin/productos/crear', [ProductoController::class, 'create']);
 
