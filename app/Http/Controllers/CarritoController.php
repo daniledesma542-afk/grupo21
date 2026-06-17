@@ -40,6 +40,10 @@ class CarritoController extends Controller
 
         $producto = Producto::findOrFail($request->producto_id);
 
+        if ($producto->deleted_at) {
+            return back()->with('error', 'Este producto ya no está disponible.');
+        }
+        
         if ($producto->stock < $request->cantidad) {
             return back()->with('error', 'No hay suficiente stock');
         }

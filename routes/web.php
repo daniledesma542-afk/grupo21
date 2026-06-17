@@ -89,31 +89,31 @@ Route::middleware(['auth', 'rol:cliente'])->group(function () {
     ->name('cliente.pedido.ticket');
 });
 
-// Rutas del Carrito de Compras (Protegidas)
-Route::middleware(['auth'])->group(function () {
-    
-    // Mostrar el carrito
+// Rutas del Carrito de Compras (SOLO CLIENTES)
+Route::middleware(['auth', 'rol:cliente'])->group(function () {
+
     Route::get('/carrito', [CarritoController::class, 'index'])->name('carrito');
-    
-    // Agregar un producto
+
     Route::post('/carrito/agregar', [CarritoController::class, 'agregar'])->name('carrito.agregar');
-    
-    // Eliminar un producto
+
     Route::delete('/carrito/eliminar/{id}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
-    
-    // Confirmar la compra
+
     Route::post('/carrito/confirmar', [CarritoController::class, 'confirmar'])->name('carrito.confirmar');
-    
-    // Vista de compra confirmada (protegida: redirige si no hay total en la sesión)
+
     Route::get('/compra-confirmada', function () {
         if (!session('total')) {
-            return redirect('/'); // Redirige al inicio si intentan entrar haciendo trampa
+            return redirect('/');
         }
         return view('backend.usuarios.compra-confirmada');
     })->name('compra.confirmada');
 
+<<<<<<< HEAD
     Route::get('/descargar-ticket', [CarritoController::class, 'descargarTicket'])->name('ticket.descargar');
     
     // Ruta para ver los usuarios
     Route::get('/admin/usuarios', [AdminController::class, 'usuarios'])->name('admin.usuarios');
+=======
+    Route::get('/descargar-ticket', [CarritoController::class, 'descargarTicket'])
+        ->name('ticket.descargar');
+>>>>>>> 9e7ce6f03e6d8a88b6ff4604bc5ba6572238b445
 });

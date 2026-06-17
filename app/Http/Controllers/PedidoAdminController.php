@@ -7,10 +7,29 @@ use Illuminate\Http\Request;
 
 class PedidoAdminController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $pedidos = VentaCabecera::with('usuario')
-            ->where('estado', '!=', 'carrito')
+        $query = VentaCabecera::with('usuario')
+            ->where('estado', '!=', 'carrito');
+
+        // FILTRO POR ESTADO
+        if ($request->filled('estado')) {
+            $query->where('estado', $request->estado);
+        }
+
+        // FILTRO POR CLIENTE
+        if ($request->filled('cliente')) {
+            $query->whereHas('usuario', function ($q) use ($request) {
+                $q->where('nombre', 'like', '%' . $request->cliente . '%');
+            });
+        }
+
+        // FILTRO POR FECHA
+        if ($request->filled('fecha')) {
+            $query->whereDate('fecha_venta', $request->fecha);
+        }
+
+        $pedidos = $query
             ->orderBy('created_at', 'desc')
             ->get();
 
@@ -19,9 +38,9 @@ class PedidoAdminController extends Controller
 
     public function show($id)
     {
-    $pedido = VentaCabecera::with(['usuario', 'detalles.producto'])
-        ->findOrFail($id);
+        $pedido = VentaCabecera::with(['usuario', 'detalles.producto'])
+            ->findOrFail($id);
 
-    return view('backend.admin.detalle-pedido', compact('pedido'));
+        return view('backend.admin.detalle-pedido', compact('pedido'));
     }
 }

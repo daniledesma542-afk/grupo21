@@ -9,18 +9,17 @@ class ProductoController extends Controller
 {
     public function index(Request $request)
     {
-        // Si el usuario eligió una categoría, la guardamos en $categoriaId
-        $categoriaId = $request->input('categoria_id');
+            $categoriaId = $request->input('categoria_id');
 
-        if ($categoriaId) {
-            // Si hay categoría, buscamos solo los productos de esa categoría
-            $productos = Producto::where('categoria_id', $categoriaId)->get();
-        } else {
-            // Si no, mostramos todos los productos como siempre
-            $productos = Producto::all();
-        }
+            $query = Producto::whereNull('deleted_at');
 
-        return view('productos', compact('productos'));
+            if ($categoriaId) {
+                $query->where('categoria_id', $categoriaId);
+            }
+
+            $productos = $query->get();
+
+            return view('productos', compact('productos'));
     }
 
     /// NUEVA FUNCIÓN: Lista exclusiva para el Administrador
@@ -42,9 +41,10 @@ class ProductoController extends Controller
 
     public function catalogo()
     {
-        $productos = Producto::all();
+    // Solo productos activos (no eliminados lógicamente)
+    $productos = Producto::whereNull('deleted_at')->get();
 
-        return view('productos', compact('productos'));
+    return view('productos', compact('productos'));
     }
 
     public function store(Request $request)
