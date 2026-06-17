@@ -26,8 +26,15 @@
                         </li>
                     </ul>
 
-                    <a href="{{ url('/productos') }}" class="btn" style="background-color: var(--beige); color: var(--verde-oscuro); font-weight: bold;">Volver al Catálogo</a>
-                </div>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="{{ url('/productos') }}" class="btn" style="background-color: var(--beige); color: var(--verde-oscuro); font-weight: bold;">
+                             Volver al Catálogo
+                        </a>
+    
+                        <a href="{{ route('ticket.descargar') }}" class="btn" style="border: 2px solid var(--verde-oscuro); color: var(--verde-oscuro); font-weight: bold;">
+                           <i class="bi bi-file-earmark-pdf"></i> Descargar Ticket
+                        </a>
+                    </div>
             </div>
         </div>
     </div>

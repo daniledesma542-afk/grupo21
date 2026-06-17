@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\VentaCabecera;
 use App\Models\VentaDetalle;
 use App\Models\Producto;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class CarritoController extends Controller
 {
@@ -123,6 +124,11 @@ public function confirmar()
         ];
     });
 
+    // --- COPIA DE SEGURIDAD PARA EL TICKET PDF ---
+    session()->put('ticket_items', $itemsParaVista);
+    session()->put('ticket_total', $total);
+    // ---------------------------------------------
+
     return redirect()->route('compra.confirmada')
         ->with('items', $itemsParaVista)
         ->with('total', $total);
@@ -133,4 +139,17 @@ public function confirmar()
         $total = $carrito->detalles()->sum('subtotal');
         $carrito->update(['total' => $total]);
     }
+
+ public function descargarTicket()
+{
+    // Rescatamos los datos de la copia de seguridad ('ticket_items' en lugar de 'items')
+    $items = session('ticket_items', []);
+    $total = session('ticket_total', 0);
+
+    // Cargamos la vista del ticket
+    $pdf = Pdf::loadView('ticket_pdf', compact('items', 'total'));
+
+    // Forzamos la descarga del archivo
+    return $pdf->download('ticket_ondas_de_sanacion.pdf');
+}
 }

@@ -103,4 +103,6 @@ Route::middleware(['auth'])->group(function () {
         return view('backend.usuarios.compra-confirmada');
     })->name('compra.confirmada');
 
+    Route::get('/descargar-ticket', [CarritoController::class, 'descargarTicket'])->name('ticket.descargar');
+
 });
