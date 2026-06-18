@@ -17,7 +17,7 @@ Declaracion de rutas
 Route::get('/', function () { return view('principal'); });
 Route::get('/quienes', function () { return view('quienes_somos'); });
 
-Route::get('/productos', [ProductoController::class, 'index'])->name('productos');
+Route::get('/productos', [ProductoController::class, 'productos'])->name('productos');
 Route::get('/productos/{id}', [ProductoController::class, 'show'])->name('producto.detalle');
 
 Route::get('/contacto', function () { return view('contacto'); });
