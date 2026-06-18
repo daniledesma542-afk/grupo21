@@ -12,112 +12,89 @@
         
         <div class="text-center mb-5">
             <div class="dropdown">
-                <button class="btn btn-filtro-principal dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <?php echo e(request('categoria_id') ? \App\Models\Categoria::find(request('categoria_id'))->nombre : 'Filtrar por Categoría'); ?>
-
+                <button class="btn dropdown-toggle px-4 py-2" 
+                        type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"
+                        style="background-color: var(--verde-oscuro); color: var(--blanco-roto); border-radius: 50px; border: none; transition: 0.3s;">
+                    Filtrar por categoría <i class="bi bi-chevron-down ms-2"></i>
                 </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="<?php echo e(route('productos')); ?>">Todos</a></li>
-                    <?php $__currentLoopData = \App\Models\Categoria::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <li><a class="dropdown-item" href="<?php echo e(route('productos', ['categoria_id' => $cat->id])); ?>"><?php echo e($cat->nombre); ?></a></li>
+                <ul class="dropdown-menu text-center shadow-sm" aria-labelledby="dropdownMenuButton" style="border-radius: 15px; border: 1px solid var(--verde-oscuro);">
+                    <li><a class="dropdown-item" href="<?php echo e(route('productos')); ?>">Todas las categorías</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <?php $__currentLoopData = $categorias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li>
+                            <a class="dropdown-item" href="<?php echo e(route('productos', ['categoria' => $cat->id])); ?>">
+                                <?php echo e($cat->nombre); ?>
+
+                            </a>
+                        </li>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </ul>
             </div>
         </div>
 
         
-        <style>
-            .btn-filtro-principal {
-                background-color: transparent;
-                border: 1px solid var(--verde-oscuro);
-                color: var(--verde-oscuro);
-                padding: 10px 40px;
-                border-radius: 50px;
-                font-family: 'Playfair Display', serif;
-                transition: 0.3s;
-            }
-            .btn-filtro-principal:hover {
-                background-color: var(--verde-oscuro);
-                color: white;
-            }
-            .dropdown-menu {
-                border-radius: 15px;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-                border: none;
-                margin-top: 10px;
-            }
-            .dropdown-item {
-                font-family: 'Playfair Display', serif;
-                color: var(--verde-oscuro);
-                padding: 10px 20px;
-            }
-            .dropdown-item:hover {
-                background-color: var(--verde-medio);
-                color: white;
-            }
-        </style>
-
-        
         <div class="row g-4">
             <?php $__empty_1 = true; $__currentLoopData = $productos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $producto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card-aesthetic h-100 card-hover p-3">
-                        
+                    <div class="card-aesthetic h-100 card-hover p-3" style="background: white; border-radius: 20px;">
+
                         
                         <div class="text-center mb-3">
-                            <a href="<?php echo e(route('producto.detalle', $producto->id)); ?>">
-                                <?php if($producto->imagen): ?>
-                                    <img src="<?php echo e(asset($producto->imagen)); ?>" alt="<?php echo e($producto->nombre); ?>" 
-                                         style="width: 100%; height: 280px; object-fit: cover; border-radius: 16px; transition: 0.3s;"
-                                         onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
-                                <?php else: ?>
-                                    <div class="d-flex justify-content-center align-items-center" style="height:280px; background:#eee; border-radius:16px;">
-                                        <span class="text-muted">Sin imagen</span>
-                                    </div>
-                                <?php endif; ?>
-                            </a>
+                            <?php if($producto->imagen): ?>
+                                <img src="<?php echo e(asset($producto->imagen)); ?>" alt="<?php echo e($producto->nombre); ?>"
+                                     style="width: 100%; height: 280px; object-fit: cover; border-radius: 16px;">
+                            <?php else: ?>
+                                <div class="d-flex justify-content-center align-items-center" style="height:280px; background:#eee; border-radius:16px;">
+                                    <span class="text-muted">Sin imagen</span>
+                                </div>
+                            <?php endif; ?>
                         </div>
 
+                        
                         <div class="text-center">
-                            
-                            
                             <a href="<?php echo e(route('producto.detalle', $producto->id)); ?>" class="text-decoration-none" style="color: inherit;">
-                                <h4 style="font-family:'Playfair Display', serif; transition: 0.3s;" 
-                                    onmouseover="this.style.color='var(--verde-medio)'" onmouseout="this.style.color='inherit'">
+                                <h4 style="font-family:'Playfair Display', serif; color: var(--verde-oscuro);">
                                     <?php echo e($producto->nombre); ?>
 
                                 </h4>
                             </a>
                             
                             <p class="texto-suave mb-3"><?php echo e($producto->descripcion); ?></p>
+
                             <h5 style="color: var(--verde-medio); font-weight: bold;">
                                 $<?php echo e(number_format($producto->precio, 2, ',', '.')); ?>
 
                             </h5>
 
                             <?php if(auth()->guard()->check()): ?>
-                                <?php if($producto->stock > 0): ?>
-                                    <form action="<?php echo e(route('carrito.agregar')); ?>" method="POST">
-                                       <?php echo csrf_field(); ?>
-                                       <input type="hidden" name="producto_id" value="<?php echo e($producto->id); ?>">
-                                       <input type="hidden" name="cantidad" value="1">
-                                       <button type="submit" class="btn-primario mt-2 w-100">
-                                          Agregar al carrito
-                                        </button>
-                                    </form>
+                                <?php if(auth()->user()->rol->nombre === 'admin'): ?>
+                                    <button class="btn mt-2 w-100" disabled style="background:#d9d9d9; color:#666; cursor:not-allowed;">
+                                        Vista de administrador
+                                    </button>
                                 <?php else: ?>
-                                    <button class="btn mt-2 w-100" disabled style="background:#ccc; color:#666;">Sin stock</button>
+                                    <?php if($producto->stock > 0): ?>
+                                        <form action="<?php echo e(route('carrito.agregar')); ?>" method="POST">
+                                          <?php echo csrf_field(); ?>
+                                            <input type="hidden" name="producto_id" value="<?php echo e($producto->id); ?>">
+                                            <input type="hidden" name="cantidad" value="1">
+    
+                                             <button type="submit" class="btn-primario mt-2 w-100">
+                                                  Agregar al carrito
+                                            </button>
+                                        </form>
+                                    <?php else: ?>
+                                        <button class="btn mt-2 w-100" disabled style="background:#ccc; color:#666; cursor:not-allowed;">Sin stock</button>
+                                    <?php endif; ?>
                                 <?php endif; ?>
                             <?php else: ?>
-                                <a href="/login" class="btn-primario mt-2 d-inline-block w-100 text-center">Iniciar sesión</a>
+                                <a href="/login" class="btn-primario mt-2 d-inline-block w-100 text-center">Iniciar sesión para comprar</a>
                             <?php endif; ?>
                         </div>
                     </div>
                 </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                 <div class="col-12 text-center py-5">
-                    <h4>No hay productos en esta categoría todavía</h4>
-                    <p class="texto-suave">Pronto habrá novedades ✨</p>
+                    <h4>No hay productos en esta selección.</h4>
                 </div>
             <?php endif; ?>
         </div>

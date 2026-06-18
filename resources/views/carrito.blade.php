@@ -10,15 +10,10 @@
             </h1>
         </div>
 
-        {{-- Mensaje de éxito si se agregó un producto --}}
+        {{-- Mensaje de éxito --}}
         @if(session('success'))
             <div class="alert mb-4" style="background-color: rgba(135, 169, 156, 0.2); color: var(--verde-oscuro); border: 1px solid var(--verde-medio); border-radius: 12px;">
                 {{ session('success') }}
-            </div>
-        @else
-            {{-- Mensaje estático simulando el de tu foto --}}
-            <div class="alert mb-4" style="background-color: rgba(135, 169, 156, 0.2); color: var(--verde-oscuro); border: 1px solid var(--verde-medio); border-radius: 12px;">
-                Producto agregado al carrito
             </div>
         @endif
 
@@ -35,8 +30,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- Ejemplo basado en tu foto. 
-                             Si tenés un foreach para recorrer tu base de datos o sesión, reemplazá este <tr> por tu ciclo --}}
                         <tr>
                             <td>Vela de Canela</td>
                             <td>1</td>
@@ -62,31 +55,21 @@
             {{-- BOTONES DE ACCIÓN --}}
             <div class="d-flex justify-content-end gap-3 mt-4 pt-3" style="border-top: 1px solid var(--beige);">
                 
-                <a href="{{ route('productos') }}" class="btn" 
-                   style="border: 1px solid var(--verde-oscuro); color: var(--verde-oscuro); border-radius: 50px; padding: 10px 25px; font-family: 'Playfair Display', serif; transition: 0.3s;">
+                {{-- Aquí usamos productos.index que es el nombre que definimos antes --}}
+                <a href="{{ route('productos.index') }}" class="btn" 
+                   style="border: 1px solid var(--verde-oscuro); color: var(--verde-oscuro); border-radius: 50px; padding: 10px 25px; font-family: 'Playfair Display', serif; text-decoration: none; transition: 0.3s;">
                     <i class="bi bi-arrow-left"></i> Seguir comprando
                 </a>
 
                 <form action="{{ route('carrito.confirmar') }}" method="POST">
                     @csrf
-                    {{-- CONTENEDOR PARA ALINEAR LOS DOS BOTONES A LA DERECHA --}}
-                       <div class="d-flex justify-content-end gap-3 mt-4">
-    
-                          <a href="{{ route('productos') }}" class="btn" 
-                             style="border: 1px solid var(--verde-oscuro); color: var(--verde-oscuro); border-radius: 50px; padding: 10px 25px; font-family: 'Playfair Display', serif; text-decoration: none; transition: 0.3s;">
-                              <i class="bi bi-arrow-left"></i> Seguir comprando
-                          </a>
-
-                          <form action="{{ route('carrito.confirmar') }}" method="POST">
-                              @csrf
-                              <button type="submit" class="btn" 
-                                      style="background-color: var(--verde-oscuro); color: white; border-radius: 50px; padding: 10px 25px; font-family: 'Playfair Display', serif; transition: 0.3s;">
-                                Confirmar Compra <i class="bi bi-check-circle"></i>
-                              </button>
-                          </form>
-                      </div>
-                    </form>
+                    <button type="submit" class="btn" 
+                            style="background-color: var(--verde-oscuro); color: white; border-radius: 50px; padding: 10px 25px; font-family: 'Playfair Display', serif; transition: 0.3s;">
+                        Confirmar Compra <i class="bi bi-check-circle"></i>
+                    </button>
+                </form>
             </div>
         </div>
+    </div>
 </section>
 @endsection

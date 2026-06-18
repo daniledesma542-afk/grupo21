@@ -8,19 +8,19 @@ use Illuminate\Http\Request;
 class ProductoController extends Controller
 {
     public function index(Request $request)
-    {
-            $categoriaId = $request->input('categoria_id');
+{
+    $query = \App\Models\Producto::query();
 
-            $query = Producto::whereNull('deleted_at');
-
-            if ($categoriaId) {
-                $query->where('categoria_id', $categoriaId);
-            }
-
-            $productos = $query->get();
-
-            return view('productos', compact('productos'));
+    // Si el usuario eligió una categoría, filtramos
+    if ($request->has('categoria') && $request->categoria != '') {
+        $query->where('categoria_id', $request->categoria);
     }
+
+    $productos = $query->get();
+    $categorias = \App\Models\Categoria::all(); // Asegurate de traer las categorías
+
+    return view('productos', compact('productos', 'categorias'));
+}
 
     /// NUEVA FUNCIÓN: Lista exclusiva para el Administrador
     public function adminIndex()

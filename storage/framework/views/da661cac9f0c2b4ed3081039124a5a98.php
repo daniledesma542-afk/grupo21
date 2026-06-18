@@ -8,7 +8,57 @@
                 Gestión de <em>Pedidos</em>
             </h1>
         </div>
+        <div class="card-aesthetic p-4 mb-4">
+    <form method="GET" action="<?php echo e(route('admin.pedidos')); ?>">
+        <div class="row g-3 align-items-end">
 
+            <div class="col-md-4">
+                <label class="form-label">Cliente</label>
+                <input type="text"
+                       name="cliente"
+                       class="form-control"
+                       value="<?php echo e(request('cliente')); ?>"
+                       placeholder="Buscar por nombre">
+            </div>
+
+                <div class="col-md-3">
+                    <label class="form-label">Estado</label>
+                    <select name="estado" class="form-control">
+                        <option value="">Todos</option>
+                        <option value="pendiente_pago" <?php echo e(request('estado') == 'pendiente_pago' ? 'selected' : ''); ?>>
+                            Pendiente pago
+                        </option>
+                        <option value="pagado" <?php echo e(request('estado') == 'pagado' ? 'selected' : ''); ?>>
+                            Pagado
+                        </option>
+                        <option value="cancelado" <?php echo e(request('estado') == 'cancelado' ? 'selected' : ''); ?>>
+                            Cancelado
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label">Fecha</label>
+                    <input type="date"
+                        name="fecha"
+                        class="form-control"
+                        value="<?php echo e(request('fecha')); ?>">
+                </div>
+
+                     <div class="col-md-2">
+                        <button type="submit" class="btn-primario w-100 mb-2">
+                            Filtrar
+                        </button>
+
+                        <a href="<?php echo e(route('admin.pedidos')); ?>"
+                        class="btn btn-secondary w-100">
+                            Limpiar
+                        </a>
+                    </div>
+
+            </div>
+        </form>
+    </div>
         <?php if($pedidos->count() > 0): ?>
 
             <?php $__currentLoopData = $pedidos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pedido): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
