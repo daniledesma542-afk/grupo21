@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mensaje;
+use App\Models\Consulta;
 
 class ContactoController extends Controller
 {
@@ -37,6 +38,15 @@ class ContactoController extends Controller
         ]);
 
         // 5. Agarramos solo el nombre de pila (para que el saludo sea "Hola Daniela" y no "Hola Daniela Ledesma")
+        Consulta::create([
+            'nombre' => $request->nombre,
+            'apellido' => $request->apellido,
+            'email' => $request->email,
+            'telefono' => $request->telefono,
+            'mensaje' => $request->mensaje,
+            'leido' => false
+        ]);
+
         $nombre = $request->nombre;
 
         // 6. Cargamos tu vista 'exito' y le pasamos la variable $nombre
