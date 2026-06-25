@@ -1,6 +1,4 @@
-@extends('plantilla')
-
-@section('contenido')
+<?php $__env->startSection('contenido'); ?>
 <section class="py-5" style="background-color: var(--blanco-roto); min-height: 80vh;">
     <div class="container">
         
@@ -14,19 +12,21 @@
             Usuarios Registrados
         </h2>
 
-        @if(session('success'))
+        <?php if(session('success')): ?>
             <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+                <?php echo e(session('success')); ?>
 
-        @if(session('error'))
+            </div>
+        <?php endif; ?>
+
+        <?php if(session('error')): ?>
             <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
+                <?php echo e(session('error')); ?>
 
-        @if($usuarios->count() > 0)
+            </div>
+        <?php endif; ?>
+
+        <?php if($usuarios->count() > 0): ?>
             <div class="card-aesthetic shadow-sm p-4" style="background-color: white; border-radius: 15px;">
                 <div class="table-responsive">
                     <table class="table table-hover align-middle">
@@ -42,63 +42,66 @@
                         </thead>
 
                         <tbody>
-                            @foreach($usuarios as $usuario)
+                            <?php $__currentLoopData = $usuarios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $usuario): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                    <td>#{{ $usuario->id }}</td>
+                                    <td>#<?php echo e($usuario->id); ?></td>
 
                                     <td class="fw-bold" style="color: var(--verde-oscuro);">
-                                        {{ $usuario->nombre }}
+                                        <?php echo e($usuario->nombre); ?>
 
-                                        @if($usuario->id === auth()->id())
+
+                                        <?php if($usuario->id === auth()->id()): ?>
                                             <span class="badge bg-secondary ms-2">
                                                 Cuenta actual
                                             </span>
-                                        @endif
+                                        <?php endif; ?>
                                     </td>
 
-                                    <td>{{ $usuario->email }}</td>
+                                    <td><?php echo e($usuario->email); ?></td>
 
                                     <td>
                                         <span class="badge px-3 py-2" 
-                                              style="background-color: {{ $usuario->rol->nombre == 'admin' ? 'var(--verde-oscuro)' : 'var(--verde-medio)' }}; border-radius: 20px;">
-                                            {{ ucfirst($usuario->rol->nombre) }}
+                                              style="background-color: <?php echo e($usuario->rol->nombre == 'admin' ? 'var(--verde-oscuro)' : 'var(--verde-medio)'); ?>; border-radius: 20px;">
+                                            <?php echo e(ucfirst($usuario->rol->nombre)); ?>
+
                                         </span>
                                     </td>
 
-                                    <td>{{ $usuario->created_at->format('d/m/Y') }}</td>
+                                    <td><?php echo e($usuario->created_at->format('d/m/Y')); ?></td>
 
                                     <td class="text-center">
-                                        @if($usuario->id === auth()->id())
+                                        <?php if($usuario->id === auth()->id()): ?>
                                             <button class="btn btn-sm btn-secondary" disabled>
                                                 No disponible
                                             </button>
-                                        @else
+                                        <?php else: ?>
                                             <form method="POST"
-                                                  action="{{ route('admin.usuarios.eliminar', $usuario->id) }}"
+                                                  action="<?php echo e(route('admin.usuarios.eliminar', $usuario->id)); ?>"
                                                   class="d-inline"
                                                   onsubmit="return confirm('¿Seguro que querés eliminar este usuario?');">
-                                                @csrf
-                                                @method('DELETE')
+                                                <?php echo csrf_field(); ?>
+                                                <?php echo method_field('DELETE'); ?>
 
                                                 <button type="submit" class="btn btn-sm btn-outline-danger">
                                                     Eliminar
                                                 </button>
                                             </form>
-                                        @endif
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                 </div>
             </div>
-        @else
+        <?php else: ?>
             <div class="text-center py-5">
                 <i class="bi bi-people" style="font-size: 4rem; color: var(--verde-medio);"></i>
                 <h4 class="mt-3 text-muted">Aún no hay usuarios registrados.</h4>
             </div>
-        @endif
+        <?php endif; ?>
         
     </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('plantilla', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Usuario\Herd\grupo21\resources\views/backend/admin/usuarios.blade.php ENDPATH**/ ?>

@@ -60,6 +60,8 @@ Route::middleware(['auth', 'rol:admin'])->group(function () {
     Route::post('/admin/mensajes/{id}/responder', [MensajeAdminController::class, 'responder'])->name('admin.mensaje.responder');
     Route::get('/admin/mensajes/{id}', [MensajeAdminController::class, 'show'])
     ->name('admin.mensaje.show');
+    Route::delete('/admin/usuarios/{id}', [AdminController::class, 'eliminarUsuario'])
+    ->name('admin.usuarios.eliminar');
     
     // Ruta de usuarios movida aquí (corregido)
     Route::get('/admin/usuarios', [AdminController::class, 'usuarios'])->name('admin.usuarios');

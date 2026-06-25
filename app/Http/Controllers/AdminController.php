@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\VentaCabecera;
+use App\Models\Usuario;
 
 class AdminController extends Controller
 {
@@ -23,13 +24,7 @@ class AdminController extends Controller
         $estadoAnterior = $pedido->estado;
         $nuevoEstado = $request->estado;
 
-        /*
-        Si el pedido NO estaba cancelado
-        y ahora pasa a cancelado,
-        devolvemos stock
-        */
         if ($estadoAnterior !== 'cancelado' && $nuevoEstado === 'cancelado') {
-
             foreach ($pedido->detalles as $detalle) {
                 $producto = $detalle->producto;
 
@@ -49,9 +44,22 @@ class AdminController extends Controller
 
     public function usuarios()
     {
-        // Traemos todos los usuarios registrados, incluyendo la información de su rol
-        $usuarios = \App\Models\Usuario::with('rol')->orderBy('created_at', 'desc')->get();
-        
+        $usuarios = Usuario::with('rol')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
         return view('backend.admin.usuarios', compact('usuarios'));
+    }
+
+    public function eliminarUsuario($id)
+    {
+        if ((int) $id === auth()->id()) {
+            return back()->with('error', 'No podés eliminar tu propia cuenta de administrador.');
+        }
+
+        $usuario = Usuario::findOrFail($id);
+        $usuario->delete();
+
+        return back()->with('success', 'Usuario eliminado correctamente.');
     }
 }
