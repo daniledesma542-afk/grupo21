@@ -6,4 +6,4 @@
     </div>
     <p class="mt-3 mb-0" style="color: var(--verde-oscuro); font-size: 0.75rem;">© 2026 Ondas de Sanación</p>
   </div>
-</footer><?php /**PATH C:\Users\Usuario-1\Documents\Herd\grupo21\resources\views/partes/footer.blade.php ENDPATH**/ ?>
+</footer><?php /**PATH C:\Users\Usuario\Herd\grupo21\resources\views/partes/footer.blade.php ENDPATH**/ ?>

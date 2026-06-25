@@ -29,4 +29,4 @@
 <script src="<?php echo e(asset('vendor/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
 
 </body>
-</html><?php /**PATH C:\Users\Usuario-1\Documents\Herd\grupo21\resources\views/plantilla.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\Users\Usuario\Herd\grupo21\resources\views/plantilla.blade.php ENDPATH**/ ?>

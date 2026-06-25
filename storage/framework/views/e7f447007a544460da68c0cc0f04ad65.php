@@ -9,4 +9,4 @@
                 <a href="<?php echo e(url('/productos')); ?>" class="btn-primario">Ver catálogo</a>
             </div>
         </div>
-</header><?php /**PATH C:\Users\Usuario-1\Documents\Herd\grupo21\resources\views/partes/header.blade.php ENDPATH**/ ?>
+</header><?php /**PATH C:\Users\Usuario\Herd\grupo21\resources\views/partes/header.blade.php ENDPATH**/ ?>

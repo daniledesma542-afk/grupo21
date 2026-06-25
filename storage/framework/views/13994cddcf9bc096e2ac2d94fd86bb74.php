@@ -1,11 +1,9 @@
-@extends('plantilla')
-
-@section('contenido')
+<?php $__env->startSection('contenido'); ?>
 <div class="container mt-5 mb-5">
     
-    {{-- Botón para volver atrás --}}
+    
     <div class="mb-4">
-        <a href="{{ route('productos') }}" class="text-decoration-none" style="color: var(--verde-oscuro); font-weight: bold;">
+        <a href="<?php echo e(route('productos')); ?>" class="text-decoration-none" style="color: var(--verde-oscuro); font-weight: bold;">
             <i class="bi bi-arrow-left"></i> Volver al catálogo
         </a>
     </div>
@@ -13,33 +11,37 @@
     <div class="card shadow-sm border-0" style="background-color: #f7f5ef;">
         <div class="row g-0 align-items-center">
             
-            {{-- Columna de la Imagen --}}
+            
             <div class="col-md-6 text-center p-4">
-                @if($producto->imagen)
-                    <img src="{{ asset($producto->imagen) }}" class="img-fluid rounded" alt="{{ $producto->nombre }}" style="max-height: 450px; object-fit: cover;">
-                @else
-                    <img src="{{ asset('img/placeholder.jpg') }}" class="img-fluid rounded" alt="Sin imagen">
-                @endif
+                <?php if($producto->imagen): ?>
+                    <img src="<?php echo e(asset($producto->imagen)); ?>" class="img-fluid rounded" alt="<?php echo e($producto->nombre); ?>" style="max-height: 450px; object-fit: cover;">
+                <?php else: ?>
+                    <img src="<?php echo e(asset('img/placeholder.jpg')); ?>" class="img-fluid rounded" alt="Sin imagen">
+                <?php endif; ?>
             </div>
 
-            {{-- Columna de la Información --}}
+            
             <div class="col-md-6 p-5">
                 
-                {{-- Categoría (Opcional, si la tenés relacionada) --}}
+                
                 <span class="badge mb-2" style="background-color: var(--verde-medio); color: var(--crema);">
-                    {{ $producto->categoria->nombre ?? 'Producto' }}
+                    <?php echo e($producto->categoria->nombre ?? 'Producto'); ?>
+
                 </span>
 
                 <h1 style="font-family: 'Playfair Display', serif; color: var(--verde-oscuro); font-weight: bold;">
-                    {{ $producto->nombre }}
+                    <?php echo e($producto->nombre); ?>
+
                 </h1>
                 
                 <h3 class="mb-4" style="color: var(--verde-oscuro);">
-                    ${{ number_format($producto->precio, 2, ',', '.') }}
+                    $<?php echo e(number_format($producto->precio, 2, ',', '.')); ?>
+
                 </h3>
 
                 <p class="fs-5 text-muted mb-4">
-                    {{ $producto->descripcion ?? 'Este producto no tiene una descripción detallada por el momento.' }}
+                    <?php echo e($producto->descripcion ?? 'Este producto no tiene una descripción detallada por el momento.'); ?>
+
                 </p>
 
                 <hr style="border-color: var(--beige);">
@@ -47,29 +49,29 @@
                 <div class="d-flex align-items-center mt-4">
                     <p class="mb-0 me-4">
                         <strong>Stock disponible:</strong> 
-                        <span class="{{ $producto->stock > 0 ? 'text-success' : 'text-danger' }}">
-                            {{ $producto->stock }} unidades
+                        <span class="<?php echo e($producto->stock > 0 ? 'text-success' : 'text-danger'); ?>">
+                            <?php echo e($producto->stock); ?> unidades
                         </span>
                     </p>
                 </div>
 
-                {{-- Formulario para agregar al carrito --}}
+                
                 <div class="mt-4">
-                    @auth
-                        @if(auth()->user()->rol->nombre === 'admin')
+                    <?php if(auth()->guard()->check()): ?>
+                        <?php if(auth()->user()->rol->nombre === 'admin'): ?>
 
                             <button class="btn mt-2 w-100" disabled
                                     style="background:#d9d9d9; color:#666; cursor:not-allowed;">
                                 Vista de administrador
                             </button>
 
-                        @else
+                        <?php else: ?>
 
-                            @if($producto->stock > 0)
-                                <form action="{{ route('carrito.agregar') }}" method="POST" class="d-flex align-items-center gap-3">
-                                    @csrf
+                            <?php if($producto->stock > 0): ?>
+                                <form action="<?php echo e(route('carrito.agregar')); ?>" method="POST" class="d-flex align-items-center gap-3">
+                                    <?php echo csrf_field(); ?>
 
-                                    <input type="hidden" name="producto_id" value="{{ $producto->id }}">
+                                    <input type="hidden" name="producto_id" value="<?php echo e($producto->id); ?>">
 
                                     <div style="width: 100px;">
                                         <input type="number"
@@ -77,7 +79,7 @@
                                             class="form-control text-center"
                                             value="1"
                                             min="1"
-                                            max="{{ $producto->stock }}">
+                                            max="<?php echo e($producto->stock); ?>">
                                     </div>
 
                                     <button type="submit" class="btn"
@@ -85,23 +87,24 @@
                                         <i class="bi bi-cart-plus"></i> Agregar al Carrito
                                     </button>
                                 </form>
-                            @else
+                            <?php else: ?>
                                 <button class="btn btn-secondary w-100 p-3" disabled>
                                     <i class="bi bi-x-circle"></i> Sin Stock
                                 </button>
-                            @endif
+                            <?php endif; ?>
 
-                        @endif
-                    @else
-                        <a href="{{ route('login') }}" class="btn w-100"
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <a href="<?php echo e(route('login')); ?>" class="btn w-100"
                         style="background-color: var(--verde-oscuro); color: var(--crema); font-weight: bold; padding: 10px 30px;">
                             Iniciar sesión para comprar
                         </a>
-                    @endauth
+                    <?php endif; ?>
                 </div>
 
             </div>
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('plantilla', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Usuario\Herd\grupo21\resources\views/detalle_producto.blade.php ENDPATH**/ ?>

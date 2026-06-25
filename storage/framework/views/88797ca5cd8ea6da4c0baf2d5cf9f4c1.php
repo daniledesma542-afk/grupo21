@@ -145,4 +145,4 @@
       </ul>
     </div>
   </div>
-</nav><?php /**PATH C:\Users\Usuario-1\Documents\Herd\grupo21\resources\views/partes/navbar.blade.php ENDPATH**/ ?>
+</nav><?php /**PATH C:\Users\Usuario\Herd\grupo21\resources\views/partes/navbar.blade.php ENDPATH**/ ?>

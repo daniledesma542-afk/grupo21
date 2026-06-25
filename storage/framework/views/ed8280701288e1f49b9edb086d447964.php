@@ -97,4 +97,4 @@
   <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
     <span class="carousel-control-next-icon"></span>
   </button>
-</div><?php /**PATH C:\Users\Usuario-1\Documents\Herd\grupo21\resources\views/partes/carrusel.blade.php ENDPATH**/ ?>
+</div><?php /**PATH C:\Users\Usuario\Herd\grupo21\resources\views/partes/carrusel.blade.php ENDPATH**/ ?>

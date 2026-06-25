@@ -14,10 +14,19 @@ use App\Http\Controllers\MensajeAdminController;
 Declaracion de rutas
 */
 
-Route::get('/', function () { return view('principal'); });
+Route::get('/', function () {
+    $productosDestacados = \App\Models\Producto::whereNull('deleted_at')
+        ->whereNotNull('imagen')
+        ->where('stock', '>', 0)
+        ->latest()
+        ->take(8)
+        ->get();
+
+    return view('principal', compact('productosDestacados'));
+});
 Route::get('/quienes', function () { return view('quienes_somos'); });
 
-Route::get('/productos', [ProductoController::class, 'productos'])->name('productos');
+Route::get('/productos', [ProductoController::class, 'index'])->name('productos');
 Route::get('/productos/{id}', [ProductoController::class, 'show'])->name('producto.detalle');
 
 Route::get('/contacto', function () { return view('contacto'); });
@@ -49,6 +58,8 @@ Route::middleware(['auth', 'rol:admin'])->group(function () {
     Route::get('/admin/mensajes', [MensajeAdminController::class, 'index'])->name('admin.mensajes');
     Route::put('/admin/mensajes/{id}/leido', [MensajeAdminController::class, 'marcarLeido'])->name('admin.mensaje.leido');
     Route::post('/admin/mensajes/{id}/responder', [MensajeAdminController::class, 'responder'])->name('admin.mensaje.responder');
+    Route::get('/admin/mensajes/{id}', [MensajeAdminController::class, 'show'])
+    ->name('admin.mensaje.show');
     
     // Ruta de usuarios movida aquí (corregido)
     Route::get('/admin/usuarios', [AdminController::class, 'usuarios'])->name('admin.usuarios');
@@ -66,6 +77,10 @@ Route::middleware(['auth', 'rol:cliente'])->group(function () {
     Route::post('/carrito/agregar', [CarritoController::class, 'agregar'])->name('carrito.agregar');
     Route::delete('/carrito/eliminar/{id}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
     Route::post('/carrito/confirmar', [CarritoController::class, 'confirmar'])->name('carrito.confirmar');
+    Route::put('/carrito/actualizar/{id}', [CarritoController::class, 'actualizarCantidad'])
+    ->name('carrito.actualizar');
+    Route::delete('/carrito/vaciar', [CarritoController::class, 'vaciar'])
+    ->name('carrito.vaciar');
     
     Route::get('/compra-confirmada', function () {
         if (!session('total')) { return redirect('/'); }

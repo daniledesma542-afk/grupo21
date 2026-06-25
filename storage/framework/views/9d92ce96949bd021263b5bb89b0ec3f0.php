@@ -1,6 +1,4 @@
-@extends('plantilla')
-
-@section('contenido')
+<?php $__env->startSection('contenido'); ?>
 <section class="py-5" style="background-color: var(--blanco-roto); min-height: 80vh;">
     <div class="container">
 
@@ -14,13 +12,14 @@
             </p>
         </div>
 
-        @if(session('success'))
+        <?php if(session('success')): ?>
             <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+                <?php echo e(session('success')); ?>
 
-        @if($mensajes->count() > 0)
+            </div>
+        <?php endif; ?>
+
+        <?php if($mensajes->count() > 0): ?>
             <div class="card shadow-sm" style="border: 1px solid var(--beige);">
                 <div class="card-body p-0">
 
@@ -37,47 +36,51 @@
                         </thead>
 
                         <tbody>
-                            @foreach($mensajes as $mensaje)
-                                <tr class="{{ $mensaje->leido ? '' : 'table-warning' }}">
+                            <?php $__currentLoopData = $mensajes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mensaje): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <tr class="<?php echo e($mensaje->leido ? '' : 'table-warning'); ?>">
                                     <td class="p-3">
-                                        {{ $mensaje->created_at->format('d/m/Y H:i') }}
+                                        <?php echo e($mensaje->created_at->format('d/m/Y H:i')); ?>
+
                                     </td>
 
                                     <td class="p-3 fw-bold" style="color: var(--verde-oscuro);">
-                                        {{ $mensaje->nombre }}
+                                        <?php echo e($mensaje->nombre); ?>
+
                                     </td>
 
                                     <td class="p-3">
-                                        {{ $mensaje->email }}
+                                        <?php echo e($mensaje->email); ?>
+
                                     </td>
 
                                     <td class="p-3">
-                                        {{ $mensaje->asunto }}
+                                        <?php echo e($mensaje->asunto); ?>
+
                                     </td>
 
                                     <td class="p-3 text-center">
-                                        @if($mensaje->leido)
+                                        <?php if($mensaje->leido): ?>
                                             <span class="badge bg-success">Leído</span>
-                                        @else
+                                        <?php else: ?>
                                             <span class="badge bg-warning text-dark">Nuevo</span>
-                                        @endif
+                                        <?php endif; ?>
                                     </td>
 
                                     <td class="p-3 text-center">
-                                        <a href="{{ route('admin.mensaje.show', $mensaje->id) }}"
+                                        <a href="<?php echo e(route('admin.mensaje.show', $mensaje->id)); ?>"
                                            class="btn btn-sm"
                                            style="background-color: var(--beige); color: var(--verde-oscuro);">
                                             Ver mensaje
                                         </a>
                                     </td>
                                 </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
 
                 </div>
             </div>
-        @else
+        <?php else: ?>
             <div class="text-center py-5">
                 <i class="bi bi-envelope-open"
                    style="font-size: 4rem; color: var(--beige);"></i>
@@ -86,8 +89,9 @@
                     No hay mensajes nuevos.
                 </h4>
             </div>
-        @endif
+        <?php endif; ?>
 
     </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('plantilla', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Usuario\Herd\grupo21\resources\views/backend/admin/mensajes.blade.php ENDPATH**/ ?>
