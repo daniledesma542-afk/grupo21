@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreProductoRequest;
 
 class ProductoController extends Controller
 {
@@ -42,34 +43,28 @@ class ProductoController extends Controller
     }
 
     // Guarda producto nuevo
-    public function store(Request $request)
-    {
-        $request->validate([
-            'nombre' => 'required|string|max:255',
-            'descripcion' => 'nullable|string',
-            'precio' => 'required|numeric',
-            'stock' => 'required|integer|min:0',
-            'categoria_id' => 'nullable|exists:categorias,id',
-            'imagen' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048'
-        ]);
+    public function store(StoreProductoRequest $request)
+{
+    // Ya no necesitamos el $request->validate() aquí adentro.
+    // Si el código llega a esta línea, es porque Laravel ya validó todo exitosamente.
 
-        $imagen = $request->file('imagen');
-        $nombreImagen = time() . '_' . $imagen->getClientOriginalName();
-        $imagen->move(public_path('img/fotos-productos'), $nombreImagen);
+    $imagen = $request->file('imagen');
+    $nombreImagen = time() . '_' . $imagen->getClientOriginalName();
+    $imagen->move(public_path('img/fotos-productos'), $nombreImagen);
 
-        Producto::create([
-            'nombre' => $request->nombre,
-            'descripcion' => $request->descripcion,
-            'precio' => $request->precio,
-            'stock' => $request->stock,
-            'categoria_id' => $request->categoria_id,
-            'imagen' => 'img/fotos-productos/' . $nombreImagen,
-        ]);
+    Producto::create([
+        'nombre' => $request->nombre,
+        'descripcion' => $request->descripcion,
+        'precio' => $request->precio,
+        'stock' => $request->stock,
+        'categoria_id' => $request->categoria_id,
+        'imagen' => 'img/fotos-productos/' . $nombreImagen,
+    ]);
 
-        return redirect()
-            ->route('admin.productos.index')
-            ->with('success', 'Producto guardado correctamente');
-    }
+    return redirect()
+        ->route('admin.productos.index')
+        ->with('success', 'Producto guardado correctamente');
+}
 
     // Formulario edición
     public function edit($id)
