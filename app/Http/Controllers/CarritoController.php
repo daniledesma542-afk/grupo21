@@ -78,8 +78,7 @@ class CarritoController extends Controller
 
         $this->recalcularTotal($carrito);
 
-        return redirect()->route('carrito')
-            ->with('success', 'Producto agregado al carrito.');
+        return back()->with('success', '¡Producto agregado al carrito con éxito!');
     }
 
     public function actualizarCantidad(Request $request, $id)
@@ -138,55 +137,6 @@ class CarritoController extends Controller
         return back()->with('success', 'Carrito vaciado correctamente.');
     }
 
-    public function confirmar()
-    {
-        $carrito = $this->obtenerCarrito();
-
-        if ($carrito->detalles()->count() === 0) {
-            return back()->with('error', 'Tu carrito está vacío.');
-        }
-
-        $items = $carrito->detalles()
-            ->with('producto')
-            ->get();
-
-        $total = $carrito->total;
-
-        foreach ($items as $item) {
-            $producto = $item->producto;
-
-            if (!$producto || $producto->deleted_at) {
-                return back()->with('error', 'Uno de los productos ya no está disponible.');
-            }
-
-            if ($producto->stock < $item->cantidad) {
-                return back()->with('error', 'Uno de los productos ya no tiene stock suficiente.');
-            }
-
-            $producto->stock -= $item->cantidad;
-            $producto->save();
-        }
-
-        $carrito->update([
-            'estado' => 'pendiente_pago',
-            'fecha_venta' => now(),
-        ]);
-
-        $itemsParaVista = $items->map(function ($item) {
-            return [
-                'nombre' => $item->producto->nombre,
-                'cantidad' => $item->cantidad,
-                'subtotal' => $item->subtotal,
-            ];
-        });
-
-        session()->put('ticket_items', $itemsParaVista);
-        session()->put('ticket_total', $total);
-
-        return redirect()->route('compra.confirmada')
-            ->with('items', $itemsParaVista)
-            ->with('total', $total);
-    }
 
     private function recalcularTotal(VentaCabecera $carrito)
     {
@@ -197,13 +147,4 @@ class CarritoController extends Controller
         ]);
     }
 
-    public function descargarTicket()
-    {
-        $items = session('ticket_items', []);
-        $total = session('ticket_total', 0);
-
-        $pdf = Pdf::loadView('ticket_pdf', compact('items', 'total'));
-
-        return $pdf->download('ticket_ondas_de_sanacion.pdf');
-    }
 }
