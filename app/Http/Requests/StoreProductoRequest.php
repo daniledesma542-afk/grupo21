@@ -6,41 +6,37 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreProductoRequest extends FormRequest
 {
-    /**
-     * Determina si el usuario está autorizado a hacer esta petición.
-     */
-    public function authorize(): bool
+    public function authorize()
     {
-        return true; // <-- DEBE ESTAR EN TRUE para que funcione
+        return true; 
     }
 
-    /**
-     * Las reglas de validación.
-     */
-    public function rules(): array
+    public function rules()
     {
         return [
             'nombre' => 'required|string|max:255',
             'descripcion' => 'nullable|string',
-            'precio' => 'required|numeric',
+            'precio' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
-            'categoria_id' => 'nullable|exists:categorias,id',
-            'imagen' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048'
+            'categoria_id' => 'required|exists:categorias,id',
+            'imagen' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048'
         ];
     }
 
     /**
-     * Mensajes personalizados en español.
+     * TRADUCCIÓN DE ATRIBUTOS
+     * Convierte los nombres técnicos de la base de datos en palabras amigables
+     * para que los mensajes de error globales de Laravel queden perfectos.
      */
-    public function messages(): array
+    public function attributes()
     {
         return [
-            'nombre.required' => 'El nombre del producto es obligatorio.',
-            'precio.required' => 'Debes asignar un precio al producto.',
-            'precio.numeric' => 'El precio debe ser un número válido.',
-            'stock.min' => 'El stock no puede ser negativo.',
-            'imagen.required' => 'Es obligatorio subir una imagen.',
-            'imagen.image' => 'El archivo subido debe ser una imagen válida.'
+            'nombre' => 'nombre del producto',
+            'descripcion' => 'descripción',
+            'precio' => 'precio de venta',
+            'stock' => 'cantidad disponible',
+            'categoria_id' => 'categoría',
+            'imagen' => 'foto del producto',
         ];
     }
 }

@@ -8,7 +8,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\PedidoAdminController;
 use App\Http\Controllers\MensajeAdminController;
-use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\VentaController;
 
 // --- Nuevos Controladores Modulares del Admin ---
 use App\Http\Controllers\Admin\DashboardController;
@@ -104,16 +104,16 @@ Route::middleware(['auth', 'rol:cliente'])->group(function () {
     Route::get('/carrito', [CarritoController::class, 'index'])->name('carrito');
     Route::post('/carrito/agregar', [CarritoController::class, 'agregar'])->name('carrito.agregar');
     Route::delete('/carrito/eliminar/{id}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
-    Route::post('/carrito/confirmar', [CheckoutController::class, 'confirmar'])->name('carrito.confirmar');
+    Route::post('/carrito/confirmar', [VentaController::class, 'confirmar'])->name('carrito.confirmar');
     Route::put('/carrito/actualizar/{id}', [CarritoController::class, 'actualizarCantidad'])->name('carrito.actualizar');
-    Route::delete('/carrito/vaciar', [CarritoController::class, 'vaciar'])->name('carrito.vaciar');
-    
+    Route::delete('/carrito/vaciar', [VentaController::class, 'vaciar'])->name('carrito.vaciar');
+
     // Confirmación y Ticket
     Route::get('/compra-confirmada', function () {
         if (!session('total')) { return redirect('/'); }
         return view('backend.usuarios.compra-confirmada');
     })->name('compra.confirmada');
 
-    Route::get('/descargar-ticket', [CheckoutController::class, 'descargarTicket'])->name('ticket.descargar');
+    Route::get('/descargar-ticket', [VentaController::class, 'descargarTicket'])->name('ticket.descargar');
 
 });
