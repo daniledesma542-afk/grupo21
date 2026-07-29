@@ -119,7 +119,7 @@
                 <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mt-4">
 
                     <div class="d-flex gap-3">
-                        <a href="{{ route('productos') }}"
+                        <a href="{{ route('productos.index') }}"
                            class="btn"
                            style="border: 1px solid var(--verde-oscuro); color: var(--verde-oscuro); border-radius: 50px; padding: 10px 25px; font-family: 'Playfair Display', serif;">
                             <i class="bi bi-arrow-left"></i> Seguir comprando
@@ -160,7 +160,7 @@
                         Tu carrito está vacío
                     </h4>
 
-                    <a href="{{ route('productos') }}"
+                    <a href="{{ route('productos.index') }}"
                        class="btn mt-3 text-dark"
                        style="background-color: var(--beige);">
                         Volver a la tienda

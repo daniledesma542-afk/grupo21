@@ -1,7 +1,9 @@
 <?php $__env->startSection('contenido'); ?>
+
 <section class="py-5" style="background-color: var(--blanco-roto); min-height: 80vh;">
     <div class="container">
 
+        
         <div class="text-center mb-5">
             <p class="hero-eyebrow">Nuestro catálogo</p>
             <h1 class="hero-titulo" style="color: var(--verde-oscuro);">
@@ -12,6 +14,27 @@
             </p>
         </div>
 
+        
+        <div class="d-flex justify-content-center flex-wrap gap-3 mb-5">
+            
+            <a href="<?php echo e(route('productos.index')); ?>" 
+               class="btn rounded-pill px-4 shadow-sm"
+               style="<?php echo e(!request('categoria') ? 'background-color: var(--verde-oscuro); color: var(--blanco-roto);' : 'background-color: transparent; border: 1px solid var(--verde-oscuro); color: var(--verde-oscuro);'); ?>">
+                Todos
+            </a>
+
+            
+            <?php $__currentLoopData = $categorias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <a href="<?php echo e(route('productos.index', ['categoria' => $cat->id])); ?>" 
+                   class="btn rounded-pill px-4 shadow-sm"
+                   style="<?php echo e(request('categoria') == $cat->id ? 'background-color: var(--verde-oscuro); color: var(--blanco-roto);' : 'background-color: transparent; border: 1px solid var(--verde-oscuro); color: var(--verde-oscuro);'); ?>">
+                    <?php echo e($cat->nombre); ?>
+
+                </a>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </div>
+
+        
         <div class="row g-4">
             <?php $__empty_1 = true; $__currentLoopData = $productos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $producto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                 <div class="col-md-6 col-lg-4">
@@ -62,16 +85,17 @@
                         
                         <div class="text-center mt-3">
                             <?php if(auth()->guard()->check()): ?>
+                                
                                 <?php if(auth()->user()->rol->nombre === 'admin'): ?>
                                     <button class="btn mt-2 w-100" disabled
                                             style="background:#d9d9d9; color:#666; cursor:not-allowed;">
                                         Vista de administrador
                                     </button>
                                 <?php else: ?>
+                                    
                                     <?php if($producto->stock > 0): ?>
                                         <form action="<?php echo e(route('carrito.agregar')); ?>" method="POST">
                                             <?php echo csrf_field(); ?>
-
                                             <input type="hidden" name="producto_id" value="<?php echo e($producto->id); ?>">
                                             <input type="hidden" name="cantidad" value="1">
 
@@ -80,6 +104,7 @@
                                             </button>
                                         </form>
                                     <?php else: ?>
+                                        
                                         <button class="btn mt-2 w-100" disabled
                                                 style="background:#ccc; color:#666; cursor:not-allowed;">
                                             Sin stock
@@ -87,6 +112,7 @@
                                     <?php endif; ?>
                                 <?php endif; ?>
                             <?php else: ?>
+                                
                                 <a href="<?php echo e(route('login')); ?>" class="btn-primario mt-2 d-inline-block w-100 text-center">
                                     Iniciar sesión para comprar
                                 </a>
@@ -96,9 +122,10 @@
                     </div>
                 </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                
                 <div class="col-12">
                     <div class="text-center py-5">
-                        <h4>No hay productos cargados todavía</h4>
+                        <h4>No hay productos cargados en esta categoría</h4>
                         <p class="text-muted">Pronto habrá novedades ✨</p>
                     </div>
                 </div>

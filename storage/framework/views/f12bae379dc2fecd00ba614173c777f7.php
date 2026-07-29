@@ -1,6 +1,4 @@
-@extends('plantilla')
-
-@section('contenido')
+<?php $__env->startSection('contenido'); ?>
 <section class="py-5" style="background-color: var(--blanco-roto); min-height: 85vh;">
     <div class="container">
 
@@ -17,7 +15,7 @@
                 <div class="card-aesthetic p-5 shadow-sm">
 
                     <form action="/admin/productos" method="POST" enctype="multipart/form-data">
-                        @csrf
+                        <?php echo csrf_field(); ?>
 
                         <div class="mb-4">
                             <label for="nombre" class="form-label fw-semibold">
@@ -68,24 +66,7 @@
                                        placeholder="Ej: 10">
                             </div>
                         </div>
-                        <div class="mb-4">
-                                <label for="categoria_id" class="form-label fw-semibold">
-                                    Categoría
-                                </label>
 
-                                <select class="form-select"
-                                        id="categoria_id"
-                                        name="categoria_id"
-                                        required>
-                                    <option value="">Seleccione una categoría</option>
-
-                                    @foreach($categorias as $categoria)
-                                        <option value="{{ $categoria->id }}">
-                                            {{ $categoria->nombre }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                        </div>
                         <div class="mb-5">
                             <label for="imagen" class="form-label fw-semibold">
                                 Foto del producto
@@ -119,4 +100,5 @@
         </div>
     </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('plantilla', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Usuario\Herd\grupo21\resources\views/backend/crear_productos.blade.php ENDPATH**/ ?>

@@ -98,7 +98,7 @@
         <?php endif; ?>
 
         <div class="text-center mt-5">
-            <a href="<?php echo e(route('productos')); ?>" class="btn btn-dorado-principal px-5 py-3">
+            <a href="<?php echo e(route('productos.index')); ?>" class="btn btn-dorado-principal px-5 py-3">
                 Ver catálogo completo
             </a>
         </div>

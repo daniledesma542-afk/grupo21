@@ -5,7 +5,7 @@
     
     {{-- Botón para volver atrás --}}
     <div class="mb-4">
-        <a href="{{ route('productos') }}" class="text-decoration-none" style="color: var(--verde-oscuro); font-weight: bold;">
+        <a href="{{ route('productos.index') }}" class="text-decoration-none" style="color: var(--verde-oscuro); font-weight: bold;">
             <i class="bi bi-arrow-left"></i> Volver al catálogo
         </a>
     </div>

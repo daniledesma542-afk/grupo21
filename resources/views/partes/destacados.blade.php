@@ -96,7 +96,7 @@
         @endif
 
         <div class="text-center mt-5">
-            <a href="{{ route('productos') }}" class="btn btn-dorado-principal px-5 py-3">
+            <a href="{{ route('productos.index') }}" class="btn btn-dorado-principal px-5 py-3">
                 Ver catálogo completo
             </a>
         </div>

@@ -55,7 +55,7 @@
             {{-- BOTONES DE ACCIÓN --}}
             <div class="d-flex justify-content-end gap-3 mt-4 pt-3" style="border-top: 1px solid var(--beige);">
                 
-                <a href="{{ route('productos') }}" class="btn" 
+                <a href="{{ route('productos.index') }}" class="btn" 
                    style="border: 1px solid var(--verde-oscuro); color: var(--verde-oscuro); border-radius: 50px; padding: 10px 25px; font-family: 'Playfair Display', serif; text-decoration: none; transition: 0.3s;">
                     <i class="bi bi-arrow-left"></i> Seguir comprando
                 </a>
